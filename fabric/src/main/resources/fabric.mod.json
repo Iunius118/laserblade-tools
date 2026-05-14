@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Iunius118/laserblade-tools",
+    "sources": "https://github.com/Iunius118/laserblade-tools",
+    "issues": "https://github.com/Iunius118/laserblade-tools/issues"
+  },
+  "license": "${license}",
+  "icon": "assets/laserbladetools/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.iunius118.laserbladetools.LaserBladeTools"
+    ],
+    "client": [
+      "com.github.iunius118.laserbladetools.LaserBladeToolsClient"
+    ],
+    "fabric-datagen": [
+    ]
+  },
+  "mixins": [
+    "${mod_id}.mixins.json",
+    "${mod_id}.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "java": ">=${java_version}"
+  },
+  "suggests": {
+  }
+}
