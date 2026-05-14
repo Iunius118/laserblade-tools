@@ -1,0 +1,8 @@
+# Change Log
+[LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
+
+## [Unreleased]
+### Added
+- NeoForge version - Require NeoForge 26.1.2.50-beta.
+- Forge version - Require Minecraft Forge 64.0.8.
+- Fabric version - Require Fabric Loader 0.19.2 and Fabric API 0.149.0+26.1.2.

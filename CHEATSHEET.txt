@@ -1,10 +1,13 @@
-# LaserBlade-Tools
+# Cheatsheet
 
-A Minecraft mod to add laser blade tools.
+LaserBlade-Tools
+version 1.0.0
+
+- [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools)
 
 ## Requirements
 
-- Minecraft 26.1.2
 - NeoForge version - NeoForge
 - Forge version - Minecraft Forge
 - Fabric version - Fabric Loader and Fabric API
+
