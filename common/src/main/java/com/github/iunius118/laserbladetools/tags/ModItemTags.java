@@ -7,7 +7,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class ModItemTags {
-    //public static final TagKey<Item>
+    public static final TagKey<Item> LASER_BLADE_TOOL_MATERIALS = tag("laser_blade_tool_materials");
+    public static final TagKey<Item> LASER_BLADE_TOOLS = tag("laser_blade_tools");
 
     private static TagKey<Item> tag(String id) {
         return TagKey.create(Registries.ITEM, CommonClass.modLocation(id));

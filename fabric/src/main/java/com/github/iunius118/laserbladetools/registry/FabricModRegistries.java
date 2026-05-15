@@ -24,6 +24,14 @@ public class FabricModRegistries {
 
     private static void registerItems() {
         var items = ModObjectRegistry.create(BuiltInRegistries.ITEM, Constants.MOD_ID);
+
+        items.register(Constants.Items.LB_CORE.getPath(), ModItems.LB_CORE);
+        items.register(Constants.Items.LB_SWORD.getPath(), ModItems.LB_SWORD);
+        items.register(Constants.Items.LB_SHOVEL.getPath(), ModItems.LB_SHOVEL);
+        items.register(Constants.Items.LB_PICKAXE.getPath(), ModItems.LB_PICKAXE);
+        items.register(Constants.Items.LB_AXE.getPath(), ModItems.LB_AXE);
+        items.register(Constants.Items.LB_HOE.getPath(), ModItems.LB_HOE);
+        items.register(Constants.Items.LB_SPEAR.getPath(), ModItems.LB_SPEAR);
     }
 
     private static void registerCreativeModeTabs() {
