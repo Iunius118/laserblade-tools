@@ -1,13 +1,16 @@
 package com.github.iunius118.laserbladetools.data;
 
+import com.github.iunius118.laserbladetools.item.ModItems;
+import com.github.iunius118.laserbladetools.tags.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,8 +22,74 @@ public class ModRecipeProvider extends VanillaRecipeProvider {
 
     @Override
     protected void buildRecipes() {
-        HolderLookup.RegistryLookup<Item> items = this.registries.lookupOrThrow(Registries.ITEM);
+        this.shaped(RecipeCategory.MISC, ModItems.LB_CORE)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('D', Tags.Items.GEMS_DIAMOND)
+                .define('G', Tags.Items.DUSTS_GLOWSTONE)
+                .define('R', Tags.Items.DUSTS_REDSTONE)
+                .pattern(" #D")
+                .pattern("#G#")
+                .pattern("R# ")
+                .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
+                .save(this.output);
 
+        this.shaped(RecipeCategory.TOOLS, ModItems.LB_AXE)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('D', Tags.Items.GEMS_DIAMOND)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("DX")
+                .pattern("D#")
+                .pattern(" #")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
+
+        this.shaped(RecipeCategory.TOOLS, ModItems.LB_HOE)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('D', Tags.Items.GEMS_DIAMOND)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("DX")
+                .pattern(" #")
+                .pattern(" #")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
+
+        this.shaped(RecipeCategory.TOOLS, ModItems.LB_PICKAXE)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('D', Tags.Items.GEMS_DIAMOND)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("DXD")
+                .pattern(" # ")
+                .pattern(" # ")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
+
+        this.shaped(RecipeCategory.TOOLS, ModItems.LB_SHOVEL)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("X")
+                .pattern("#")
+                .pattern("#")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
+
+        this.shaped(RecipeCategory.COMBAT, ModItems.LB_SWORD)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('D', Tags.Items.GEMS_DIAMOND)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("D")
+                .pattern("X")
+                .pattern("#")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
+
+        this.shaped(RecipeCategory.COMBAT, ModItems.LB_SPEAR)
+                .define('#', Tags.Items.INGOTS_IRON)
+                .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
+                .pattern("  X")
+                .pattern(" # ")
+                .pattern("#  ")
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output);
     }
 
     private String getItemId(Item item) {
