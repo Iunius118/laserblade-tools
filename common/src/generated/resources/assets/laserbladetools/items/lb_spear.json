@@ -1,0 +1,79 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:composite",
+          "models": [
+            {
+              "type": "minecraft:model",
+              "model": "laserbladetools:item/lb_spear_handle",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "default": 16777215
+                }
+              ]
+            },
+            {
+              "type": "minecraft:model",
+              "model": "laserbladetools:item/lb_spear_blade",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "default": 16711680,
+                  "index": 1
+                },
+                {
+                  "type": "minecraft:custom_model_data",
+                  "default": 16777215,
+                  "index": 2
+                }
+              ]
+            }
+          ]
+        },
+        "when": [
+          "gui",
+          "ground",
+          "fixed",
+          "on_shelf"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:composite",
+      "models": [
+        {
+          "type": "minecraft:model",
+          "model": "laserbladetools:item/lb_spear_in_hand_handle",
+          "tints": [
+            {
+              "type": "minecraft:custom_model_data",
+              "default": 16777215
+            }
+          ]
+        },
+        {
+          "type": "minecraft:model",
+          "model": "laserbladetools:item/lb_spear_in_hand_blade",
+          "tints": [
+            {
+              "type": "minecraft:custom_model_data",
+              "default": 16711680,
+              "index": 1
+            },
+            {
+              "type": "minecraft:custom_model_data",
+              "default": 16777215,
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    "property": "minecraft:display_context"
+  },
+  "swap_animation_scale": 1.95
+}
