@@ -4,7 +4,11 @@
   "package": "com.github.iunius118.laserbladetools.mixin",
   "compatibilityLevel": "JAVA_18",
   "mixins": [],
-  "client": [],
+  "client": [
+    "client.BakedQuadMaterialInfoAccessor",
+    "client.CuboidItemModelWrapperUnbakedMixin",
+    "client.RenderTypeInvoker"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
