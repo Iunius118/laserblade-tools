@@ -1,0 +1,33 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "laserbladetools:item/lb_shovel_handle",
+        "tints": [
+          {
+            "type": "minecraft:custom_model_data",
+            "default": 16777215
+          }
+        ]
+      },
+      {
+        "type": "minecraft:model",
+        "model": "laserbladetools:item/lb_shovel_blade",
+        "tints": [
+          {
+            "type": "minecraft:custom_model_data",
+            "default": 16711680,
+            "index": 1
+          },
+          {
+            "type": "minecraft:custom_model_data",
+            "default": 16777215,
+            "index": 2
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -28,6 +28,6 @@ public class LaserBladeTools {
 
         // Assets
         event.createProvider(ModLanguageProvider::new);
-        //event.createProvider(ModModelProvider::new);
+        event.createProvider(ModModelProvider::new);
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/spear_in_hand",
+  "textures": {
+    "layer0": "laserbladetools:item/lb_spear_in_hand_blade_0",
+    "layer1": "laserbladetools:item/lb_spear_in_hand_blade_1"
+  }
+}

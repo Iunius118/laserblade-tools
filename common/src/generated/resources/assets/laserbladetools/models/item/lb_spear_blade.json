@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "laserbladetools:item/lb_spear_blade_0",
+    "layer1": "laserbladetools:item/lb_spear_blade_1"
+  }
+}
