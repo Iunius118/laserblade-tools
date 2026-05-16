@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class FabricModRegistries {
 
@@ -42,7 +43,7 @@ public class FabricModRegistries {
 
     private static CreativeModeTab getMainCreativeModeTab() {
         return FabricCreativeModeTab.builder()
-                //.icon(() -> new ItemStack(ModItems.ICON_MAIN))
+                .icon(() -> new ItemStack(ModItems.LB_SWORD))
                 .title(Component.translatable(Constants.CreativeModeTabs.TITLE_MOD_MAIN))
                 .displayItems((params, output) -> {
                     for (Item i : ModItems.ITEMS) {
