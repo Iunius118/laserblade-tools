@@ -9,6 +9,8 @@ They have performance comparable to diamond tools.
 
 ## Download Mod
 
+- Releases
+
 ## Requirements
 
 - Minecraft 26.1.2
