@@ -76,7 +76,7 @@ public class ModModelProvider extends ModelProvider {
 						.requiredTextureSlot(TextureSlot.LAYER0)
 						.build().create(getItemModelId(name + "_handle"), TextureMapping.layer0(
 								getMaterial(name)), modelOutput),
-				new CustomModelDataSource(0, 0xFFFFFF));
+				new CustomModelDataSource(0, 0xFFF9FFFE));
 		var bladeModel = ItemModelUtils.tintedModel(
 				ExtendedModelTemplateBuilder.builder()
 						.parent(parent)
@@ -85,8 +85,8 @@ public class ModModelProvider extends ModelProvider {
 						.build().create(getItemModelId(name + "_blade"), TextureMapping.layered(
 								getMaterial(name + "_blade_0"),
 								getMaterial(name + "_blade_1")), modelOutput),
-				new CustomModelDataSource(1, 0xFF0000),
-				new CustomModelDataSource(2, 0xFFFFFF));
+				new CustomModelDataSource(1, 0xFFFF0000),
+				new CustomModelDataSource(2, 0xFFFFFFFF));
 		return ItemModelUtils.composite(handleModel, bladeModel);
 	}
 
