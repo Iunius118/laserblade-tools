@@ -11,3 +11,121 @@ version 1.0.0
 - Forge version - Minecraft Forge
 - Fabric version - Fabric Loader and Fabric API
 
+## How to Get Started
+
+1. Craft a laser blade core
+2. Craft a laser blade tool
+
+## Items
+
+### Laser Blade Core
+
+A laser blade core is the crafting and repair material for laser blade tools.
+
+Crafting (shaped recipe):
+
+    Laser Blade Core
+    4x Iron Ingot (#), 1x Diamond (D), 1x Glowstone Dust (G) and 1x Redstone Dust (R)
+    |   | # | D |
+    | # | G | # |
+    | R | # |   |
+
+### Laser Blade Tools
+
+Laser blade tools are tool items with laser blades.
+
+- Laser Blade Axe
+- Laser Blade Hoe
+- Laser Blade Pickaxe
+- Laser Blade Shovel
+- Laser Blade Spear
+- Laser Blade Sword
+
+Laser blade tools have performance comparable to diamond tools.
+
+- Mining level: Diamond tool
+- Base mining speed: 8
+- Durability: 2031
+- Repair material: Laser blade core
+
+The colors of each part of laser blade tools can be changed using the `minecraft:custom_model_data` component.
+
+    minecraft:custom_model_data={colors:[(handle color),(outer blade color),(inner blade color)]}
+
+#### Laser Blade Axe
+
+- Attack damage: 9
+- Attack speed: 1
+
+Crafting (shaped recipe):
+
+    Laser Blade Axe
+    2x Iron Ingot (#), 2x Diamond (D) and 1x Laser Blade Core (X)
+    | D | X |   |
+    | D | # |   |
+    |   | # |   |
+
+#### Laser Blade Hoe
+
+- Attack damage: 1
+- Attack speed: 4
+
+Crafting (shaped recipe):
+
+    Laser Blade Hoe
+    2x Iron Ingot (#), 1x Diamond (D) and 1x Laser Blade Core (X)
+    | D | X |   |
+    |   | # |   |
+    |   | # |   |
+
+#### Laser Blade Pickaxe
+
+- Attack damage: 5
+- Attack speed: 1.2
+
+Crafting (shaped recipe):
+
+    Laser Blade Pickaxe
+    2x Iron Ingot (#), 2x Diamond (D) and 1x Laser Blade Core (X)
+    | D | X | D |
+    |   | # |   |
+    |   | # |   |
+
+#### Laser Blade Shovel
+
+- Attack damage: 5.5
+- Attack speed: 1
+
+Crafting (shaped recipe):
+
+    Laser Blade Shovel
+    2x Iron Ingot (#) and 1x Laser Blade Core (X)
+    |   | X |   |
+    |   | # |   |
+    |   | # |   |
+
+#### Laser Blade Spear
+
+- Attack damage: 4
+- Attack speed: 0.95
+
+Crafting (shaped recipe):
+
+    Laser Blade Spear
+    2x Iron Ingot (#) and 1x Laser Blade Core (X)
+    |   |   | X |
+    |   | # |   |
+    | # |   |   |
+
+#### Laser Blade Sword
+
+- Attack damage: 7
+- Attack speed: 1.6
+
+Crafting (shaped recipe):
+
+    Laser Blade Sword
+    1x Iron Ingot (#), 1x Diamond (D) and 1x Laser Blade Core (X)
+    |   | D |   |
+    |   | X |   |
+    |   | # |   |
