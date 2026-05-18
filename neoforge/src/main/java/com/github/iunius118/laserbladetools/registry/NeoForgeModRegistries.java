@@ -1,6 +1,7 @@
 package com.github.iunius118.laserbladetools.registry;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -21,6 +22,8 @@ public class NeoForgeModRegistries {
     private static void registerBlocks(IEventBus modEventBus) {
         var blocks = DeferredRegister.createBlocks(Constants.MOD_ID);
 
+        blocks.register(Constants.Blocks.LB_COLORIZER.getPath(), () -> ModBlocks.LB_COLORIZER);
+
         blocks.register(modEventBus);
     }
 
@@ -34,6 +37,8 @@ public class NeoForgeModRegistries {
         items.register(Constants.Items.LB_AXE.getPath(), () -> ModItems.LB_AXE);
         items.register(Constants.Items.LB_HOE.getPath(), () -> ModItems.LB_HOE);
         items.register(Constants.Items.LB_SPEAR.getPath(), () -> ModItems.LB_SPEAR);
+
+        items.register(Constants.Blocks.LB_COLORIZER.getPath(), () -> ModItems.LB_COLORIZER);
 
         items.register(modEventBus);
     }

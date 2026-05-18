@@ -1,6 +1,7 @@
 package com.github.iunius118.laserbladetools.data;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import com.github.iunius118.laserbladetools.tags.ModBlockTags;
 import com.github.iunius118.laserbladetools.tags.ModItemTags;
@@ -16,23 +17,24 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         // Creative mode tabs
-        add(Constants.CreativeModeTabs.TITLE_MOD_MAIN, Constants.MOD_NAME);
+        this.add(Constants.CreativeModeTabs.TITLE_MOD_MAIN, Constants.MOD_NAME);
 
         // Blocks
+        this.add(ModBlocks.LB_COLORIZER, "Laser Blade Colorizer");
 
         // Items
-        add(ModItems.LB_CORE, "Laser Blade Core");
-        add(ModItems.LB_SWORD, "Laser Blade Sword");
-        add(ModItems.LB_SHOVEL, "Laser Blade Shovel");
-        add(ModItems.LB_PICKAXE, "Laser Blade Pickaxe");
-        add(ModItems.LB_AXE, "Laser Blade Axe");
-        add(ModItems.LB_HOE, "Laser Blade Hoe");
-        add(ModItems.LB_SPEAR, "Laser Blade Spear");
+        this.add(ModItems.LB_CORE, "Laser Blade Core");
+        this.add(ModItems.LB_SWORD, "Laser Blade Sword");
+        this.add(ModItems.LB_SHOVEL, "Laser Blade Shovel");
+        this.add(ModItems.LB_PICKAXE, "Laser Blade Pickaxe");
+        this.add(ModItems.LB_AXE, "Laser Blade Axe");
+        this.add(ModItems.LB_HOE, "Laser Blade Hoe");
+        this.add(ModItems.LB_SPEAR, "Laser Blade Spear");
 
         // Tags: blocks
-        add(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL, "Incorrect for Laser Blade Tool");
+        this.add(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL, "Incorrect for Laser Blade Tool");
         // Tags: items
-        add(ModItemTags.LASER_BLADE_TOOL_MATERIALS, "Laser Blade Tool Materials");
-        add(ModItemTags.LASER_BLADE_TOOLS, "Laser Blade Tools");
+        this.add(ModItemTags.LASER_BLADE_TOOL_MATERIALS, "Laser Blade Tool Materials");
+        this.add(ModItemTags.LASER_BLADE_TOOLS, "Laser Blade Tools");
     }
 }

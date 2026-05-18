@@ -1,5 +1,6 @@
 package com.github.iunius118.laserbladetools.data;
 
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -35,13 +36,14 @@ public class ModLootTableProvider extends LootTableProvider {
 
         @Override
         protected void generate() {
-
+            // Add loot tables from blocks
+            this.add(ModBlocks.LB_COLORIZER, this.createSingleItemTable(ModBlocks.LB_COLORIZER));
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return List.of(
-
+                    ModBlocks.LB_COLORIZER
             );
         }
     }

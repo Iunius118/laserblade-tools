@@ -1,6 +1,7 @@
 package com.github.iunius118.laserbladetools.item;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class ModItems {
     public static final List<Item> ITEMS = new ArrayList<>();
+    public static final List<BlockItem> BLOCK_ITEMS = new ArrayList<>();
 
     public static final Item LB_CORE = add(new Item(createProperties(Constants.Items.LB_CORE)));
     public static final Item LB_SWORD = add(new Item(
@@ -29,23 +31,29 @@ public class ModItems {
             createProperties(Constants.Items.LB_SPEAR)
                     .spear(ModToolMaterials.LASER_BLADE, 1.05F, 1.075F, 0.5F, 3.0F, 10.0F, 6.5F, 5.1F, 10.0F, 4.6F)));
 
+    // Block Items
+    public static final Item LB_COLORIZER = addBlock(new BlockItem(ModBlocks.LB_COLORIZER,
+            createProperties(Constants.Blocks.LB_COLORIZER)
+                    .useBlockDescriptionPrefix()));
+
     private static Item add(Item item) {
         ITEMS.add(item);
         return item;
+    }
+
+    private static Item addBlock(BlockItem item) {
+        BLOCK_ITEMS.add(item);
+        return add(item);
     }
 
     private static Item.Properties createProperties(Identifier id) {
         return new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id));
     }
 
-    private static void registerBlockItem(Item item) {
-        if (item instanceof BlockItem blockItem) {
-            blockItem.registerBlocks(Item.BY_BLOCK, item);
-        }
-    }
-
     static {
         // Register block items
-        //registerBlockItem(MY_BLOCK);
+        for (BlockItem blockItem: BLOCK_ITEMS) {
+            blockItem.registerBlocks(Item.BY_BLOCK, blockItem);
+        }
     }
 }

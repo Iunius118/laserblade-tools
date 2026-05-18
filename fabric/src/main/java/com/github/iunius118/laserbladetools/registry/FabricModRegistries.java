@@ -1,6 +1,7 @@
 package com.github.iunius118.laserbladetools.registry;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -21,6 +22,8 @@ public class FabricModRegistries {
 
     private static void registerBlocks() {
         var blocks = ModObjectRegistry.create(BuiltInRegistries.BLOCK, Constants.MOD_ID);
+
+        blocks.register(Constants.Blocks.LB_COLORIZER.getPath(), ModBlocks.LB_COLORIZER);
     }
 
     private static void registerItems() {
@@ -33,6 +36,8 @@ public class FabricModRegistries {
         items.register(Constants.Items.LB_AXE.getPath(), ModItems.LB_AXE);
         items.register(Constants.Items.LB_HOE.getPath(), ModItems.LB_HOE);
         items.register(Constants.Items.LB_SPEAR.getPath(), ModItems.LB_SPEAR);
+
+        items.register(Constants.Blocks.LB_COLORIZER.getPath(), ModItems.LB_COLORIZER);
     }
 
     private static void registerCreativeModeTabs() {
