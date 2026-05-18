@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:crafting_table",
+    "X": "#laserbladetools:laser_blade_tool_materials"
+  },
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "result": {
+    "id": "laserbladetools:lb_colorizer"
+  }
+}
