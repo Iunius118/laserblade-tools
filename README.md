@@ -9,7 +9,7 @@ They have performance comparable to diamond tools.
 
 ## Download Mod
 
-- Releases
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/laserblade-tools)
 
 ## Requirements
 
