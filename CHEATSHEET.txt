@@ -129,3 +129,16 @@ Crafting (shaped recipe):
     |   | D |   |
     |   | X |   |
     |   | # |   |
+
+## Blocks
+
+### Laser Blade Colorizer
+
+Crafting (shaped recipe):
+
+    Laser Blade Colorizer
+    1x Crafting Table (#) and 1x Laser Blade Core (X)
+    |   | X |   |
+    |   | # |   |
+    |   |   |   |
+
