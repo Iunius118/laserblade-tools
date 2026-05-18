@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 
 public class ModBlocks {
-    public static final Block LB_COLORIZER = new Block(
+    public static final Block LB_COLORIZER = new LaserBladeColorizerBlock(
 			createProperties(Constants.Blocks.LB_COLORIZER)
 					.mapColor(MapColor.WOOD)
 					.instrument(NoteBlockInstrument.BASS)

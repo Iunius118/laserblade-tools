@@ -1,6 +1,7 @@
 package com.github.iunius118.laserbladetools.data;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import net.minecraft.client.color.item.CustomModelDataSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -37,6 +38,7 @@ public class ModModelProvider extends ModelProvider {
 	private void generateBlockModels(BlockModelGenerators blockModels) {
 		Consumer<BlockModelDefinitionGenerator> blockStateOutput = blockModels.blockStateOutput;
 
+		blockModels.createHorizontallyRotatedBlock(ModBlocks.LB_COLORIZER, TexturedModel.CUBE_TOP_BOTTOM);
 	}
 
 	private void generateItemModels(ItemModelGenerators itemModels) {
