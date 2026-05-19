@@ -9,6 +9,7 @@ They have performance comparable to diamond tools.
 
 ## Download Mod
 
+- [Modrinth](https://modrinth.com/mod/laserblade-tools)
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/laserblade-tools)
 
 ## Requirements
