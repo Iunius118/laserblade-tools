@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "laserbladetools:lb_colorizer"
+          "name": "laserbladetools:colorizer"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "laserbladetools:blocks/lb_colorizer"
+  "random_sequence": "laserbladetools:blocks/colorizer"
 }

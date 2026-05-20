@@ -38,7 +38,7 @@ public class ModModelProvider extends ModelProvider {
 	private void generateBlockModels(BlockModelGenerators blockModels) {
 		Consumer<BlockModelDefinitionGenerator> blockStateOutput = blockModels.blockStateOutput;
 
-		blockModels.createHorizontallyRotatedBlock(ModBlocks.LB_COLORIZER, TexturedModel.CUBE_TOP_BOTTOM);
+		blockModels.createHorizontallyRotatedBlock(ModBlocks.COLORIZER, TexturedModel.CUBE_TOP_BOTTOM);
 	}
 
 	private void generateItemModels(ItemModelGenerators itemModels) {

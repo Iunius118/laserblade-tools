@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "laserbladetools:block/lb_colorizer"
+    "model": "laserbladetools:block/colorizer"
   }
 }

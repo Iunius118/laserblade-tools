@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "laserbladetools:block/colorizer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "laserbladetools:block/colorizer"
+    },
+    "facing=south": {
+      "model": "laserbladetools:block/colorizer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "laserbladetools:block/colorizer",
+      "y": 270
+    }
+  }
+}

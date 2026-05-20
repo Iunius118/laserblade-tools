@@ -20,7 +20,7 @@ public class ModLanguageProvider extends LanguageProvider {
         this.add(Constants.CreativeModeTabs.TITLE_MOD_MAIN, Constants.MOD_NAME);
 
         // Blocks
-        this.add(ModBlocks.LB_COLORIZER, "Laser Blade Colorizer");
+        this.add(ModBlocks.COLORIZER, "Laser Blade Colorizer");
 
         // Items
         this.add(ModItems.LB_CORE, "Laser Blade Core");

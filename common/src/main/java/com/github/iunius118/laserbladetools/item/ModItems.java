@@ -32,8 +32,8 @@ public class ModItems {
                     .spear(ModToolMaterials.LASER_BLADE, 1.05F, 1.075F, 0.5F, 3.0F, 10.0F, 6.5F, 5.1F, 10.0F, 4.6F)));
 
     // Block Items
-    public static final Item LB_COLORIZER = addBlock(new BlockItem(ModBlocks.LB_COLORIZER,
-            createProperties(Constants.Blocks.LB_COLORIZER)
+    public static final Item COLORIZER = addBlock(new BlockItem(ModBlocks.COLORIZER,
+            createProperties(Constants.Blocks.COLORIZER)
                     .useBlockDescriptionPrefix()));
 
     private static Item add(Item item) {

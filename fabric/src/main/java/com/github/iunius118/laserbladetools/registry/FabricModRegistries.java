@@ -23,7 +23,7 @@ public class FabricModRegistries {
     private static void registerBlocks() {
         var blocks = ModObjectRegistry.create(BuiltInRegistries.BLOCK, Constants.MOD_ID);
 
-        blocks.register(Constants.Blocks.LB_COLORIZER.getPath(), ModBlocks.LB_COLORIZER);
+        blocks.register(Constants.Blocks.COLORIZER.getPath(), ModBlocks.COLORIZER);
     }
 
     private static void registerItems() {
@@ -37,7 +37,7 @@ public class FabricModRegistries {
         items.register(Constants.Items.LB_HOE.getPath(), ModItems.LB_HOE);
         items.register(Constants.Items.LB_SPEAR.getPath(), ModItems.LB_SPEAR);
 
-        items.register(Constants.Blocks.LB_COLORIZER.getPath(), ModItems.LB_COLORIZER);
+        items.register(Constants.Blocks.COLORIZER.getPath(), ModItems.COLORIZER);
     }
 
     private static void registerCreativeModeTabs() {

@@ -37,13 +37,13 @@ public class ModLootTableProvider extends LootTableProvider {
         @Override
         protected void generate() {
             // Add loot tables from blocks
-            this.add(ModBlocks.LB_COLORIZER, this.createSingleItemTable(ModBlocks.LB_COLORIZER));
+            this.add(ModBlocks.COLORIZER, this.createSingleItemTable(ModBlocks.COLORIZER));
         }
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return List.of(
-                    ModBlocks.LB_COLORIZER
+                    ModBlocks.COLORIZER
             );
         }
     }

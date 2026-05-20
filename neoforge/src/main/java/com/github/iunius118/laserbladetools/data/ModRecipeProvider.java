@@ -96,7 +96,7 @@ public class ModRecipeProvider extends VanillaRecipeProvider {
                 .save(this.output);
 
         // Laser blade colorizer
-        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.LB_COLORIZER)
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.COLORIZER)
                 .define('#', Blocks.CRAFTING_TABLE)
                 .define('X', ModItemTags.LASER_BLADE_TOOL_MATERIALS)
                 .pattern("X")

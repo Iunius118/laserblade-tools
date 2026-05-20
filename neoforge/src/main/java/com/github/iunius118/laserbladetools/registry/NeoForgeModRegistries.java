@@ -22,7 +22,7 @@ public class NeoForgeModRegistries {
     private static void registerBlocks(IEventBus modEventBus) {
         var blocks = DeferredRegister.createBlocks(Constants.MOD_ID);
 
-        blocks.register(Constants.Blocks.LB_COLORIZER.getPath(), () -> ModBlocks.LB_COLORIZER);
+        blocks.register(Constants.Blocks.COLORIZER.getPath(), () -> ModBlocks.COLORIZER);
 
         blocks.register(modEventBus);
     }
@@ -38,7 +38,7 @@ public class NeoForgeModRegistries {
         items.register(Constants.Items.LB_HOE.getPath(), () -> ModItems.LB_HOE);
         items.register(Constants.Items.LB_SPEAR.getPath(), () -> ModItems.LB_SPEAR);
 
-        items.register(Constants.Blocks.LB_COLORIZER.getPath(), () -> ModItems.LB_COLORIZER);
+        items.register(Constants.Blocks.COLORIZER.getPath(), () -> ModItems.COLORIZER);
 
         items.register(modEventBus);
     }
