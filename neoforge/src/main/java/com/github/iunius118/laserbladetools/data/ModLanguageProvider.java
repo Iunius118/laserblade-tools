@@ -36,5 +36,12 @@ public class ModLanguageProvider extends LanguageProvider {
         // Tags: items
         this.add(ModItemTags.LASER_BLADE_TOOL_MATERIALS, "Laser Blade Tool Materials");
         this.add(ModItemTags.LASER_BLADE_TOOLS, "Laser Blade Tools");
+
+        // Menu
+        this.add(Constants.Colorizer.CONTAINER_COLORIZER, "Laser Blade Colorizer");
+        this.add(Constants.Colorizer.PART_HANDLE, "Handle");
+        this.add(Constants.Colorizer.PART_OUTER_BLADE, "Outer Blade");
+        this.add(Constants.Colorizer.PART_INNER_BLADE, "Inner Blade");
+        this.add(Constants.Colorizer.COLOR_UNCOLORED, "Uncolored");
     }
 }

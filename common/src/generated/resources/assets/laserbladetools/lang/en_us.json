@@ -1,5 +1,10 @@
 {
-  "block.laserbladetools.lb_colorizer": "Laser Blade Colorizer",
+  "block.laserbladetools.colorizer": "Laser Blade Colorizer",
+  "color.laserbladetools.uncolored": "Uncolored",
+  "container.laserbladetools.colorizer": "Laser Blade Colorizer",
+  "gui.laserbladetools.colorizer.part.handle": "Handle",
+  "gui.laserbladetools.colorizer.part.inner_blade": "Inner Blade",
+  "gui.laserbladetools.colorizer.part.outer_blade": "Outer Blade",
   "item.laserbladetools.lb_axe": "Laser Blade Axe",
   "item.laserbladetools.lb_core": "Laser Blade Core",
   "item.laserbladetools.lb_hoe": "Laser Blade Hoe",

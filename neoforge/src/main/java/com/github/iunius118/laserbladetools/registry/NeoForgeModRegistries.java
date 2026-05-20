@@ -3,6 +3,7 @@ package com.github.iunius118.laserbladetools.registry;
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
+import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,6 +17,7 @@ public class NeoForgeModRegistries {
     public static void registerGameObjects(IEventBus modEventBus) {
         registerBlocks(modEventBus);
         registerItems(modEventBus);
+        registerMenuTypes(modEventBus);
         registerCreativeModeTabs(modEventBus);
     }
 
@@ -41,6 +43,14 @@ public class NeoForgeModRegistries {
         items.register(Constants.Blocks.COLORIZER.getPath(), () -> ModItems.COLORIZER);
 
         items.register(modEventBus);
+    }
+
+    private static void registerMenuTypes(IEventBus modEventBus) {
+        var menuTypes = DeferredRegister.create(Registries.MENU, Constants.MOD_ID);
+
+        menuTypes.register(Constants.MenuTypes.COLORIZER.getPath(), () -> ModMenuTypes.COLORIZER);
+
+        menuTypes.register(modEventBus);
     }
 
     private static void registerCreativeModeTabs(IEventBus modEventBus) {

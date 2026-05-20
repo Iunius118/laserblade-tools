@@ -3,6 +3,7 @@ package com.github.iunius118.laserbladetools.registry;
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
+import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,6 +18,7 @@ public class FabricModRegistries {
     public static void registerGameObjects() {
         registerBlocks();
         registerItems();
+        registerMenuTypes();
         registerCreativeModeTabs();
     }
 
@@ -38,6 +40,12 @@ public class FabricModRegistries {
         items.register(Constants.Items.LB_SPEAR.getPath(), ModItems.LB_SPEAR);
 
         items.register(Constants.Blocks.COLORIZER.getPath(), ModItems.COLORIZER);
+    }
+
+    private static void registerMenuTypes() {
+        var menuTypes = ModObjectRegistry.create(BuiltInRegistries.MENU, Constants.MOD_ID);
+
+        menuTypes.register(Constants.MenuTypes.COLORIZER.getPath(), ModMenuTypes.COLORIZER);
     }
 
     private static void registerCreativeModeTabs() {
