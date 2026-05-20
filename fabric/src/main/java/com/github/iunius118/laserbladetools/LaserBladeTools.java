@@ -1,7 +1,10 @@
 package com.github.iunius118.laserbladetools;
 
+import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
 import com.github.iunius118.laserbladetools.registry.FabricModRegistries;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class LaserBladeTools implements ModInitializer {
 
@@ -13,5 +16,14 @@ public class LaserBladeTools implements ModInitializer {
 
         // Register mod game objects
         FabricModRegistries.registerGameObjects();
+
+        // Register listeners
+        registerPayloads();
+    }
+
+    private void registerPayloads() {
+        PayloadTypeRegistry.serverboundPlay().register(ColorSelectionPayload.TYPE, ColorSelectionPayload.STREAM_CODEC);
+        ServerPlayNetworking.registerGlobalReceiver(ColorSelectionPayload.TYPE,
+                (payload, context) -> ColorSelectionPayload.handle(payload, context.player()));
     }
 }
