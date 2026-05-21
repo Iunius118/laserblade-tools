@@ -2,6 +2,8 @@
 [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
 
 ## [Unreleased]
+
+## [1.0.0-beta.2]
 ### Added
 - Add Laser Blade Colorizer block to recolor laser blade tools.
 
