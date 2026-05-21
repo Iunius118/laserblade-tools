@@ -18,6 +18,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         // Mod
-        tag(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL).addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
+        this.tag(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL).addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
     }
 }

@@ -1,8 +1,11 @@
 package com.github.iunius118.laserbladetools.platform;
 
+import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
+import com.github.iunius118.laserbladetools.network.ModChannels;
 import com.github.iunius118.laserbladetools.platform.services.IPlatformHelper;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.network.PacketDistributor;
 
 public class ForgePlatformHelper implements IPlatformHelper {
 
@@ -19,5 +22,10 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public boolean isDevelopmentEnvironment() {
         return !FMLLoader.isProduction();
+    }
+
+    @Override
+    public void sendColorSelectionPayloadToServer(ColorSelectionPayload payload) {
+        ModChannels.PAYLOAD_CHANNEL.send(payload, PacketDistributor.SERVER.noArg());
     }
 }

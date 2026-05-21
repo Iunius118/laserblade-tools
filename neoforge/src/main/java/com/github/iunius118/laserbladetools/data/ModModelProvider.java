@@ -1,6 +1,8 @@
 package com.github.iunius118.laserbladetools.data;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
+import com.github.iunius118.laserbladetools.item.LaserBladeColor;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import net.minecraft.client.color.item.CustomModelDataSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -37,6 +39,7 @@ public class ModModelProvider extends ModelProvider {
 	private void generateBlockModels(BlockModelGenerators blockModels) {
 		Consumer<BlockModelDefinitionGenerator> blockStateOutput = blockModels.blockStateOutput;
 
+		blockModels.createHorizontallyRotatedBlock(ModBlocks.COLORIZER, TexturedModel.CUBE_TOP_BOTTOM);
 	}
 
 	private void generateItemModels(ItemModelGenerators itemModels) {
@@ -76,7 +79,7 @@ public class ModModelProvider extends ModelProvider {
 						.requiredTextureSlot(TextureSlot.LAYER0)
 						.build().create(getItemModelId(name + "_handle"), TextureMapping.layer0(
 								getMaterial(name)), modelOutput),
-				new CustomModelDataSource(0, 0xFFF9FFFE));
+				new CustomModelDataSource(0, LaserBladeColor.WHITE.handleColor()));
 		var bladeModel = ItemModelUtils.tintedModel(
 				ExtendedModelTemplateBuilder.builder()
 						.parent(parent)
@@ -85,8 +88,8 @@ public class ModModelProvider extends ModelProvider {
 						.build().create(getItemModelId(name + "_blade"), TextureMapping.layered(
 								getMaterial(name + "_blade_0"),
 								getMaterial(name + "_blade_1")), modelOutput),
-				new CustomModelDataSource(1, 0xFFFF0000),
-				new CustomModelDataSource(2, 0xFFFFFFFF));
+				new CustomModelDataSource(1, LaserBladeColor.RED.bladeColor()),
+				new CustomModelDataSource(2, LaserBladeColor.WHITE.bladeColor()));
 		return ItemModelUtils.composite(handleModel, bladeModel);
 	}
 

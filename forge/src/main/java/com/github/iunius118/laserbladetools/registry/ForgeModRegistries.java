@@ -1,7 +1,9 @@
 package com.github.iunius118.laserbladetools.registry;
 
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
+import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,11 +18,14 @@ public class ForgeModRegistries {
     public static void registerGameObjects(BusGroup modBusGroup) {
         registerBlocks(modBusGroup);
         registerItems(modBusGroup);
+        registerMenuTypes(modBusGroup);
         registerCreativeModeTabs(modBusGroup);
     }
 
     private static void registerBlocks(BusGroup modBusGroup) {
         var blocks = DeferredRegister.create(ForgeRegistries.BLOCKS, Constants.MOD_ID);
+
+        blocks.register(Constants.Blocks.COLORIZER.getPath(), () -> ModBlocks.COLORIZER);
 
         blocks.register(modBusGroup);
     }
@@ -36,7 +41,17 @@ public class ForgeModRegistries {
         items.register(Constants.Items.LB_HOE.getPath(), () -> ModItems.LB_HOE);
         items.register(Constants.Items.LB_SPEAR.getPath(), () -> ModItems.LB_SPEAR);
 
+        items.register(Constants.Blocks.COLORIZER.getPath(), () -> ModItems.COLORIZER);
+
         items.register(modBusGroup);
+    }
+
+    private static void registerMenuTypes(BusGroup modBusGroup) {
+        var menuTypes = DeferredRegister.create(Registries.MENU, Constants.MOD_ID);
+
+        menuTypes.register(Constants.MenuTypes.COLORIZER.getPath(), () -> ModMenuTypes.COLORIZER);
+
+        menuTypes.register(modBusGroup);
     }
 
     private static void registerCreativeModeTabs(BusGroup modBusGroup) {

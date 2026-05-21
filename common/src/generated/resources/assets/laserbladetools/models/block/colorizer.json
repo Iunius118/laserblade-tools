@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "laserbladetools:block/colorizer_bottom",
+    "side": "laserbladetools:block/colorizer_side",
+    "top": "laserbladetools:block/colorizer_top"
+  }
+}

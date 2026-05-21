@@ -1,5 +1,6 @@
 package com.github.iunius118.laserbladetools;
 
+import com.github.iunius118.laserbladetools.network.ModChannels;
 import com.github.iunius118.laserbladetools.registry.ForgeModRegistries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,6 +18,9 @@ public class LaserBladeTools {
 
         // Register mod event listeners
         ForgeModRegistries.registerGameObjects(modBusGroup);
+
+        // Init network channels
+        ModChannels.init();
 
         // Init client-side
         if (FMLLoader.getDist().isClient()) {

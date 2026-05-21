@@ -10,6 +10,7 @@ public class Constants {
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
     public static class Blocks {
+        public static final Identifier COLORIZER = CommonClass.modLocation("colorizer");
     }
 
     public static class Items {
@@ -22,10 +23,23 @@ public class Constants {
         public static final Identifier LB_SPEAR = CommonClass.modLocation("lb_spear");
     }
 
+    public static class MenuTypes {
+        public static final Identifier COLORIZER = CommonClass.modLocation("colorizer");
+    }
+
     public static class CreativeModeTabs {
         public static final Identifier MAIN = CommonClass.modLocation("main");
 
         // Translation key
         public static final String TITLE_MOD_MAIN = "itemGroup.%s.main".formatted(Constants.MOD_ID);
+    }
+
+    public static class Colorizer {
+        // Translation key
+        public static final String CONTAINER_COLORIZER = "container.%s.colorizer".formatted(Constants.MOD_ID);
+        public static final String PART_HANDLE = "gui.%s.colorizer.part.handle".formatted(Constants.MOD_ID);
+        public static final String PART_OUTER_BLADE = "gui.%s.colorizer.part.outer_blade".formatted(Constants.MOD_ID);
+        public static final String PART_INNER_BLADE = "gui.%s.colorizer.part.inner_blade".formatted(Constants.MOD_ID);
+        public static final String COLOR_UNCOLORED = "color.%s.uncolored".formatted(Constants.MOD_ID);
     }
 }

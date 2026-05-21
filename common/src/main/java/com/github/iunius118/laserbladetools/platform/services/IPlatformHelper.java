@@ -1,5 +1,7 @@
 package com.github.iunius118.laserbladetools.platform.services;
 
+import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
+
 public interface IPlatformHelper {
 
     /**
@@ -32,4 +34,11 @@ public interface IPlatformHelper {
     default String getEnvironmentName() {
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+	/**
+     * Send {@link ColorSelectionPayload} to server.
+     *
+	 * @param payload Payload to send.
+	 */
+    void sendColorSelectionPayloadToServer(ColorSelectionPayload payload);
 }

@@ -1,4 +1,6 @@
-// 26.1.2	2026-05-17T15:09:41.0691222	Model Definitions - laserbladetools
+// 26.1.2	2026-05-20T17:32:21.9335004	Model Definitions - laserbladetools
+a79793e51bba11e55e6bfe8e79af3ca5d157da44 assets/laserbladetools/blockstates/colorizer.json
+e41516c81299cca05535fdb047dcbeec93f682d9 assets/laserbladetools/items/colorizer.json
 44aee7427bbea6ee4a20d1b7d50fb2a20d885852 assets/laserbladetools/items/lb_axe.json
 65b41f4833e6f5647107787c4e10e99708a1b758 assets/laserbladetools/items/lb_core.json
 391e4f13e2a2dc445153cb2d825c5ef8c44233c0 assets/laserbladetools/items/lb_hoe.json
@@ -6,6 +8,7 @@
 a787ad5ce91a2cb8217121db5838e06f44912ef9 assets/laserbladetools/items/lb_shovel.json
 1098499974c6c85332ed2290bececcfe29d36054 assets/laserbladetools/items/lb_spear.json
 a3b415b61ee0225e827d989a46377d1db87efac9 assets/laserbladetools/items/lb_sword.json
+7d60edf3b57c20d95de1681c56fba4d50e6b4020 assets/laserbladetools/models/block/colorizer.json
 76cb773544c7d39fca176dfd867270d2ec35f99f assets/laserbladetools/models/item/lb_axe_blade.json
 48d0e556895ef552dc3daeafeb74d00c042123b9 assets/laserbladetools/models/item/lb_axe_handle.json
 3559418b666b2a8f8861d11bffc66220fc6e03df assets/laserbladetools/models/item/lb_core.json
