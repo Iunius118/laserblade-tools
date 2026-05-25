@@ -3,6 +3,17 @@
 
 ## [Unreleased]
 
+## [1.0.0-beta.3]
+### Added
+- Add `laserbladetools:colorizer_can_change_color` item tag to specify which items laser blade colorizer can accept.
+
+### Changed
+- Improve format of part color data stored in laser blade tools.
+- Use `flags` in `minecraft:custom_model_data` component for laser blade tool coloring.
+  Only parts whose flags are set to `true` are colored.
+- Change laser blade tool models to use `minecraft:custom_model_data` property as condition.
+- Laser blade tools colored in previous versions can have their colors repaired using laser blade colorizer.
+
 ## [1.0.0-beta.2]
 ### Added
 - Add Laser Blade Colorizer block to recolor laser blade tools.
