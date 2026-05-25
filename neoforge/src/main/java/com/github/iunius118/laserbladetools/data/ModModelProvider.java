@@ -4,6 +4,7 @@ import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.LaserBladeColor;
 import com.github.iunius118.laserbladetools.item.ModItems;
+import net.minecraft.client.color.item.Constant;
 import net.minecraft.client.color.item.CustomModelDataSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -13,6 +14,7 @@ import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerato
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.conditional.CustomModelDataProperty;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -72,25 +74,50 @@ public class ModModelProvider extends ModelProvider {
 
 	private ItemModel.Unbaked generateToolModel(String name, Identifier parent,
 												BiConsumer<Identifier, ModelInstance> modelOutput) {
-		// Generate handle and blade models of the tool
-		var handleModel = ItemModelUtils.tintedModel(
-				ExtendedModelTemplateBuilder.builder()
-						.parent(parent)
-						.requiredTextureSlot(TextureSlot.LAYER0)
-						.build().create(getItemModelId(name + "_handle"), TextureMapping.layer0(
-								getMaterial(name)), modelOutput),
-				new CustomModelDataSource(0, LaserBladeColor.WHITE.handleColor()));
-		var bladeModel = ItemModelUtils.tintedModel(
-				ExtendedModelTemplateBuilder.builder()
-						.parent(parent)
-						.requiredTextureSlot(TextureSlot.LAYER0)
-						.requiredTextureSlot(TextureSlot.LAYER1)
-						.build().create(getItemModelId(name + "_blade"), TextureMapping.layered(
-								getMaterial(name + "_blade_0"),
-								getMaterial(name + "_blade_1")), modelOutput),
-				new CustomModelDataSource(1, LaserBladeColor.RED.bladeColor()),
-				new CustomModelDataSource(2, LaserBladeColor.WHITE.bladeColor()));
-		return ItemModelUtils.composite(handleModel, bladeModel);
+        // Generate handle and blade models
+        Identifier handleModel = ExtendedModelTemplateBuilder.builder()
+                .parent(parent)
+                .requiredTextureSlot(TextureSlot.LAYER0)
+                .build().create(getItemModelId(name + "_handle"), TextureMapping.layer0(
+                        getMaterial(name)), modelOutput);
+        Identifier bladeModel = ExtendedModelTemplateBuilder.builder()
+                .parent(parent)
+                .requiredTextureSlot(TextureSlot.LAYER0)
+                .requiredTextureSlot(TextureSlot.LAYER1)
+                .build().create(getItemModelId(name + "_blade"), TextureMapping.layered(
+                                getMaterial(name + "_blade_0"),
+                                getMaterial(name + "_blade_1")), modelOutput);
+
+        // Create handle model definition
+        ItemModel.Unbaked handleModelDefinition = ItemModelUtils.conditional(new CustomModelDataProperty(0),
+                // Colored handle
+                ItemModelUtils.tintedModel(handleModel,
+                        new CustomModelDataSource(0, 0)),
+                // Uncolored handle
+                ItemModelUtils.tintedModel(handleModel,
+                        new Constant(LaserBladeColor.WHITE.handleColor())));
+        // Create blade model definition
+        ItemModel.Unbaked bladeModelDefinition = ItemModelUtils.conditional(new CustomModelDataProperty(1),
+                ItemModelUtils.conditional(new CustomModelDataProperty(2),
+                        // Colored both blades
+                        ItemModelUtils.tintedModel(bladeModel,
+                                new CustomModelDataSource(1, 0),
+                                new CustomModelDataSource(2, 0)),
+                        // Colored outer blade only
+                        ItemModelUtils.tintedModel(bladeModel,
+                                new CustomModelDataSource(1, 0),
+                                new Constant(LaserBladeColor.WHITE.bladeColor()))),
+                ItemModelUtils.conditional(new CustomModelDataProperty(2),
+                        // Colored inner blade only
+                        ItemModelUtils.tintedModel(bladeModel,
+                                new Constant(LaserBladeColor.RED.bladeColor()),
+                                new CustomModelDataSource(2, 0)),
+                        // Uncolored both blades
+                        ItemModelUtils.tintedModel(bladeModel,
+                                new Constant(LaserBladeColor.RED.bladeColor()),
+                                new Constant(LaserBladeColor.WHITE.bladeColor()))));
+        // Create tool model definition
+		return ItemModelUtils.composite(handleModelDefinition, bladeModelDefinition);
 	}
 
 	private Identifier getItemModelId(String name) {
