@@ -13,6 +13,7 @@ import net.minecraft.world.item.component.CustomModelData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ColorizerMenu extends AbstractContainerMenu {
     public static final int INPUT_SLOT = 0;
@@ -58,7 +59,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
                 // Accept only laser blade tools
-                return itemStack.is(ModItemTags.LASER_BLADE_TOOLS);
+                return itemStack.is(ModItemTags.COLORIZER_CAN_CHANGE_COLOR);
             }
         });
 
@@ -108,30 +109,47 @@ public class ColorizerMenu extends AbstractContainerMenu {
     }
 
     public ItemStack applyColors(ItemStack input) {
-        CustomModelData existing = input.get(DataComponents.CUSTOM_MODEL_DATA);
-        List<Integer> existingColors = (existing != null) ? existing.colors() : List.of();
-        List<Integer> newColors = new ArrayList<>();
         boolean hasChanged = false;
+        CustomModelData existing = input.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
+
+        if (existing.flags().isEmpty() && !existing.colors().isEmpty()) {
+            // Fix the data if it has colors but no flags (for backward compatibility)
+            List<Boolean> fixedFlags = new ArrayList<>();
+
+            for (Integer color : existing.colors()) {
+                fixedFlags.add(true);
+            }
+
+            existing =  new CustomModelData(existing.floats(), fixedFlags, existing.strings(), existing.colors());
+            hasChanged = true;
+        }
+
+        List<Integer> newColors = new ArrayList<>();
+        List<Boolean> newFlags = new ArrayList<>();
 
         for (int i = 0; i < NUM_PARTS; i++) {
             int colorIndex = colorIndexSlots[i].get();
 
             if (colorIndex == 0) {
                 // If "Uncolored" is selected,
-                if (i < existingColors.size()) {
-                    // Preserve the existing color
-                    newColors.add(existingColors.get(i));
+                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && existing.getColor(i) != null) {
+                    // Preserve the existing color if present
+                    newColors.add(existing.getColor(i));
+                    newFlags.add(true);
                 } else {
-                    // Abort color updates when there is no color to apply
-                    break;
+                    // There is no color to apply
+                    newColors.add(0);
+                    newFlags.add(false);
                 }
             } else {
                 // If any color is selected,
                 int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) & 0xFFFFFF;
+                Integer oldColor = existing.getColor(i);
                 newColors.add(newColor);
+                newFlags.add(true);
 
-                if (i < existingColors.size()) {
-                    if ((existingColors.get(i) & 0xFFFFFF) != newColor) {
+                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && oldColor != null) {
+                    if ((oldColor & 0xFFFFFF) != newColor) {
                         // If the selected color is different from the existing color,
                         // Update the part color with the selected color
                         hasChanged = true;
@@ -146,16 +164,8 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
         if (hasChanged) {
             ItemStack output = input.copy();
-
-            // Apply new colors to the item
-            if (existing != null) {
-                output.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(
-                        existing.floats(), existing.flags(), existing.strings(), newColors));
-            } else {
-                output.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(
-                        List.of(), List.of(), List.of(), newColors));
-            }
-
+            output.set(DataComponents.CUSTOM_MODEL_DATA,
+                    new CustomModelData(existing.floats(), newFlags, existing.strings(), newColors));
             return output;
         }
 

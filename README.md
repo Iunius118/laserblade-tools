@@ -59,6 +59,3 @@ The procedure for changing the colors of laser blade tools is as follows:
 1. Place a laser blade tool in the input slot on the left side of the interface
 2. Press the cycle buttons below to select the color of each part
 3. Take the recolored laser blade tool from the result slot in the center
-
-\*To change the color of the outer blade, the handle color must be set.
-Likewise, to change the color of the inner blade, the outer blade color must be set.

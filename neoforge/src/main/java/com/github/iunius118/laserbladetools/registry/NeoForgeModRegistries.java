@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class NeoForgeModRegistries {
@@ -29,11 +30,13 @@ public class NeoForgeModRegistries {
         blocks.register(modEventBus);
     }
 
+    private static DeferredItem<Item> lb_sword;
+
     private static void registerItems(IEventBus modEventBus) {
         var items = DeferredRegister.createItems(Constants.MOD_ID);
 
         items.register(Constants.Items.LB_CORE.getPath(), () -> ModItems.LB_CORE);
-        items.register(Constants.Items.LB_SWORD.getPath(), () -> ModItems.LB_SWORD);
+        lb_sword = items.register(Constants.Items.LB_SWORD.getPath(), () -> ModItems.LB_SWORD);
         items.register(Constants.Items.LB_SHOVEL.getPath(), () -> ModItems.LB_SHOVEL);
         items.register(Constants.Items.LB_PICKAXE.getPath(), () -> ModItems.LB_PICKAXE);
         items.register(Constants.Items.LB_AXE.getPath(), () -> ModItems.LB_AXE);
@@ -65,10 +68,14 @@ public class NeoForgeModRegistries {
     private static CreativeModeTab getMainCreativeModeTab() {
         return CreativeModeTab.builder()
                 .title(Component.translatable(Constants.CreativeModeTabs.TITLE_MOD_MAIN))
-                .icon(() -> new ItemStack(ModItems.LB_SWORD))
+                // Check whether the mod items exist
+                .icon(() -> lb_sword.isBound() ?  new ItemStack(ModItems.LB_SWORD) : ItemStack.EMPTY)
                 .displayItems((params, output) -> {
+                    // Check whether the mod items exist
+                    if (!lb_sword.isBound()) return;
+
                     for (Item i : ModItems.ITEMS) {
-                        if (i != null) output.accept(i);
+                        output.accept(i);
                     }
                 })
                 .build();

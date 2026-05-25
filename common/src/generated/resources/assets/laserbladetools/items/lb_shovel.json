@@ -3,30 +3,103 @@
     "type": "minecraft:composite",
     "models": [
       {
-        "type": "minecraft:model",
-        "model": "laserbladetools:item/lb_shovel_handle",
-        "tints": [
-          {
-            "type": "minecraft:custom_model_data",
-            "default": -393218
-          }
-        ]
+        "type": "minecraft:condition",
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "laserbladetools:item/lb_shovel_handle",
+          "tints": [
+            {
+              "type": "minecraft:constant",
+              "value": -393218
+            }
+          ]
+        },
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "laserbladetools:item/lb_shovel_handle",
+          "tints": [
+            {
+              "type": "minecraft:custom_model_data",
+              "default": 0
+            }
+          ]
+        },
+        "property": "minecraft:custom_model_data"
       },
       {
-        "type": "minecraft:model",
-        "model": "laserbladetools:item/lb_shovel_blade",
-        "tints": [
-          {
-            "type": "minecraft:custom_model_data",
-            "default": -65536,
-            "index": 1
+        "type": "minecraft:condition",
+        "index": 1,
+        "on_false": {
+          "type": "minecraft:condition",
+          "index": 2,
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "laserbladetools:item/lb_shovel_blade",
+            "tints": [
+              {
+                "type": "minecraft:constant",
+                "value": -65536
+              },
+              {
+                "type": "minecraft:constant",
+                "value": -1
+              }
+            ]
           },
-          {
-            "type": "minecraft:custom_model_data",
-            "default": -1,
-            "index": 2
-          }
-        ]
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "laserbladetools:item/lb_shovel_blade",
+            "tints": [
+              {
+                "type": "minecraft:constant",
+                "value": -65536
+              },
+              {
+                "type": "minecraft:custom_model_data",
+                "default": 0,
+                "index": 2
+              }
+            ]
+          },
+          "property": "minecraft:custom_model_data"
+        },
+        "on_true": {
+          "type": "minecraft:condition",
+          "index": 2,
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "laserbladetools:item/lb_shovel_blade",
+            "tints": [
+              {
+                "type": "minecraft:custom_model_data",
+                "default": 0,
+                "index": 1
+              },
+              {
+                "type": "minecraft:constant",
+                "value": -1
+              }
+            ]
+          },
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "laserbladetools:item/lb_shovel_blade",
+            "tints": [
+              {
+                "type": "minecraft:custom_model_data",
+                "default": 0,
+                "index": 1
+              },
+              {
+                "type": "minecraft:custom_model_data",
+                "default": 0,
+                "index": 2
+              }
+            ]
+          },
+          "property": "minecraft:custom_model_data"
+        },
+        "property": "minecraft:custom_model_data"
       }
     ]
   }

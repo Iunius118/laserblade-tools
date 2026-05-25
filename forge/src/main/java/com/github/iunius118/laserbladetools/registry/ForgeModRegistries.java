@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ForgeModRegistries {
 
@@ -30,11 +31,13 @@ public class ForgeModRegistries {
         blocks.register(modBusGroup);
     }
 
+    private static RegistryObject<Item> lb_sword;
+
     private static void registerItems(BusGroup modBusGroup) {
         var items = DeferredRegister.create(ForgeRegistries.ITEMS, Constants.MOD_ID);
 
         items.register(Constants.Items.LB_CORE.getPath(), () -> ModItems.LB_CORE);
-        items.register(Constants.Items.LB_SWORD.getPath(), () -> ModItems.LB_SWORD);
+        lb_sword = items.register(Constants.Items.LB_SWORD.getPath(), () -> ModItems.LB_SWORD);
         items.register(Constants.Items.LB_SHOVEL.getPath(), () -> ModItems.LB_SHOVEL);
         items.register(Constants.Items.LB_PICKAXE.getPath(), () -> ModItems.LB_PICKAXE);
         items.register(Constants.Items.LB_AXE.getPath(), () -> ModItems.LB_AXE);
@@ -66,10 +69,14 @@ public class ForgeModRegistries {
     private static CreativeModeTab getMainCreativeModeTab() {
         return CreativeModeTab.builder()
                 .title(Component.translatable(Constants.CreativeModeTabs.TITLE_MOD_MAIN))
-                .icon(() -> new ItemStack(ModItems.LB_SWORD))
+                // Check whether the mod items exist
+                .icon(() -> lb_sword.isPresent() ?  new ItemStack(ModItems.LB_SWORD) : ItemStack.EMPTY)
                 .displayItems((params, output) -> {
+                    // Check whether the mod items exist
+                    if (!lb_sword.isPresent()) return;
+
                     for (Item i : ModItems.ITEMS) {
-                        if (i != null) output.accept(i);
+                        output.accept(i);
                     }
                 })
                 .build();

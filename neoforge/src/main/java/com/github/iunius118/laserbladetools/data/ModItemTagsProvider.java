@@ -46,5 +46,6 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
                 .add(ModItems.LB_AXE)
                 .add(ModItems.LB_HOE)
                 .add(ModItems.LB_SPEAR);
+        this.tag(ModItemTags.COLORIZER_CAN_CHANGE_COLOR).addTag(ModItemTags.LASER_BLADE_TOOLS);
     }
 }
