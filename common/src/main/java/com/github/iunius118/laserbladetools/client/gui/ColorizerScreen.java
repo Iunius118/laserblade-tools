@@ -24,6 +24,7 @@ import net.minecraft.world.item.component.CustomModelData;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> implements ContainerListener {
@@ -130,10 +131,19 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 
 	private void renderColorPreviews(GuiGraphicsExtractor graphics) {
 		ItemStack inputItem = menu.getSlot(ColorizerMenu.INPUT_SLOT).getItem();
-		CustomModelData existingData = inputItem.isEmpty()
-				? null
-				: inputItem.get(DataComponents.CUSTOM_MODEL_DATA);
-		List<Integer> existingColors = (existingData != null) ? existingData.colors() : List.of();
+		CustomModelData existingData = inputItem.isEmpty() ?
+                null : inputItem.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
+        List<Boolean> existingFlags = (existingData != null) ? existingData.flags() : List.of();
+        List<Integer> existingColors = (existingData != null) ? existingData.colors() : List.of();
+
+        if (existingFlags.isEmpty() && !existingColors.isEmpty()) {
+            // Fix the data if it has colors but no flags (for backward compatibility)
+            existingFlags = new ArrayList<>();
+
+            for (Integer color : existingColors) {
+                existingFlags.add(true);
+            }
+        }
 
 		// RenderColorPreviews
 		for (int i = 0; i < ColorizerMenu.NUM_PARTS; i++) {
@@ -142,7 +152,7 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 
 			if (colorIndex == 0) {
 				// The existing color
-				if (i < existingColors.size()) {
+				if (existingFlags.size() > i && existingFlags.get(i) && existingColors.size() > i) {
 					argb = existingColors.get(i) | 0xFF000000;
 				} else {
 					continue;
