@@ -36,6 +36,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // Tags: items
         this.add(ModItemTags.LASER_BLADE_TOOL_MATERIALS, "Laser Blade Tool Materials");
         this.add(ModItemTags.LASER_BLADE_TOOLS, "Laser Blade Tools");
+        this.add(ModItemTags.COLORIZER_CAN_CHANGE_COLOR, "Colorizer Can Change Color");
 
         // Menu
         this.add(Constants.Colorizer.CONTAINER_COLORIZER, "Laser Blade Colorizer");
