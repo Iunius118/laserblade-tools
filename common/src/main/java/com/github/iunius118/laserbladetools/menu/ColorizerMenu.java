@@ -59,7 +59,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
                 // Accept only laser blade tools
-                return itemStack.is(ModItemTags.LASER_BLADE_TOOLS);
+                return itemStack.is(ModItemTags.COLORIZER_CAN_CHANGE_COLOR);
             }
         });
 
