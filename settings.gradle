@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         gradlePluginPortal()
         mavenCentral()
@@ -35,6 +37,6 @@ plugins {
 rootProject.name = 'laserblade-tools'
 include('common')
 include('fabric')
-include('neoforge')
 include('forge')
+include('neoforge')
 include('datagen')
