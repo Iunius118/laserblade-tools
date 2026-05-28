@@ -30,6 +30,12 @@ Crafting (shaped recipe):
     | # | G | # |
     | R | # |   |
 
+Laser blade tools can be smelted into laser blade cores using a furnace or blast furnace.
+
+Smelting/Blasting:
+
+    Laser Blade Axe/Hoe/Pickaxe/Shovel/Spear/Sword -> Laser Blade Core
+
 ### Laser Blade Tools
 
 Laser blade tools are tool items with laser blades.

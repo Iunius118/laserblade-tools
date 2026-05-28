@@ -9,8 +9,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
@@ -94,6 +97,43 @@ public class ModRecipeProvider extends VanillaRecipeProvider {
                 .pattern("#  ")
                 .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
                 .save(this.output);
+
+        // Laser blade core from laser blade tools
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(
+                                ModItems.LB_AXE,
+                                ModItems.LB_HOE,
+                                ModItems.LB_PICKAXE,
+                                ModItems.LB_SHOVEL,
+                                ModItems.LB_SWORD,
+                                ModItems.LB_SPEAR
+                        ),
+                        RecipeCategory.MISC,
+                        CookingBookCategory.MISC,
+                        ModItems.LB_CORE,
+                        0.1F,
+                        200
+                )
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output, getSmeltingRecipeName(ModItems.LB_CORE));
+
+        SimpleCookingRecipeBuilder.blasting(
+                        Ingredient.of(
+                                ModItems.LB_AXE,
+                                ModItems.LB_HOE,
+                                ModItems.LB_PICKAXE,
+                                ModItems.LB_SHOVEL,
+                                ModItems.LB_SWORD,
+                                ModItems.LB_SPEAR
+                        ),
+                        RecipeCategory.MISC,
+                        CookingBookCategory.MISC,
+                        ModItems.LB_CORE,
+                        0.1F,
+                        100
+                )
+                .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
+                .save(this.output, getBlastingRecipeName(ModItems.LB_CORE));
 
         // Laser blade colorizer
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.COLORIZER)
