@@ -32,7 +32,7 @@ jobs:
         with:
           name: Artifacts
           path: |
+            fabric/build/libs/*.jar
             forge/build/libs/*.jar
             neoforge/build/libs/*.jar
-            fabric/build/libs/*.jar
             datagen/build/libs/*.jar
