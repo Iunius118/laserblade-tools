@@ -30,6 +30,12 @@ Crafting (shaped recipe):
     | # | G | # |
     | R | # |   |
 
+Laser blade tools can be smelted into laser blade cores using a furnace or blast furnace.
+
+Smelting/Blasting:
+
+    Laser Blade Axe/Hoe/Pickaxe/Shovel/Spear/Sword -> Laser Blade Core
+
 ### Laser Blade Tools
 
 Laser blade tools are tool items with laser blades.
@@ -48,14 +54,7 @@ Laser blade tools have performance comparable to diamond tools.
 - Durability: 2031
 - Repair material: Laser blade core
 
-The colors of each part of laser blade tools can be changed using the `minecraft:custom_model_data` component.
-
-    minecraft:custom_model_data={
-      flags:[(is handle color set),(is outer blade color set),(is inner blade color set)],
-      colors:[(handle color),(outer blade color),(inner blade color)]
-    }
-
-A laser blade colorizer block can also be used to change the colors of laser blade tools.
+A laser blade colorizer block can be used to change the colors of laser blade tools.
 
 #### Laser Blade Axe
 
@@ -156,3 +155,24 @@ The procedure for changing the colors of laser blade tools is as follows:
 1. Place a laser blade tool in the input slot on the left side of the interface
 2. Press the cycle buttons below to select the color of each part
 3. Take the recolored laser blade tool from the result slot in the center
+
+## Mechanism
+
+### Laser Blade Tool Coloring
+
+The colors of each part of laser blade tools are stored using the `minecraft:custom_model_data` component.
+
+    minecraft:custom_model_data={
+      flags:[(is handle color set),(is outer blade color set),(is inner blade color set)],
+      colors:[(handle color),(outer blade color),(inner blade color)]
+    }
+
+These values stored in each tool are used in item models.
+
+Parts whose `flags` are set to `true` are rendered using the colors set in `colors`;
+otherwise, they are rendered using the default colors specified by the item models.
+
+### Laser Blade Rendering
+
+This mod uses mixins to assign a custom unlit render type to specific models.
+The targets are item models in the `laserbladetools` domain whose file names end with `_blade`.
