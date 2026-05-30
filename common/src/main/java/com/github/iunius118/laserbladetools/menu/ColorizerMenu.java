@@ -98,6 +98,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
     private void updateResult() {
         ItemStack input = inputContainer.getItem(0);
+        ItemStack result = resultContainer.getItem(0);
 
         if (input.isEmpty()) {
             resultContainer.setItem(0, ItemStack.EMPTY);
@@ -105,7 +106,11 @@ public class ColorizerMenu extends AbstractContainerMenu {
             resultContainer.setItem(0, applyColors(input));
         }
 
-        this.broadcastChanges();
+        // Compare the instances, as the result slot will contain a different instance if it has been modified
+        if (result != resultContainer.getItem(0)) {
+            // If the result slot has been modified, notify the client to update it
+            this.broadcastChanges();
+        }
     }
 
     public ItemStack applyColors(ItemStack input) {
