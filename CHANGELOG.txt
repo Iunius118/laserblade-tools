@@ -2,7 +2,12 @@
 [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
 
 ## [Unreleased]
-## Fixed
+
+## [1.0.1+26.1.2]
+### Changed
+- Change version format to `{mod_version}+{minecraft_version}`.
+
+### Fixed
 - Fix laser blade colorizer to always apply opaque colors to tools.
 
 ## [1.0.0]
