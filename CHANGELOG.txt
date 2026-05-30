@@ -4,6 +4,9 @@
 ## [Unreleased]
 
 ## [1.0.1]
+### Changed
+- Change version format to `{mod_version}+{minecraft_version}`.
+
 ### Fixed
 - Fix laser blade colorizer to always apply opaque colors to tools.
 
