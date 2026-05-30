@@ -132,9 +132,11 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
             if (colorIndex == 0) {
                 // If "Uncolored" is selected,
-                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && existing.getColor(i) != null) {
+                Integer existingColor = existing.getColor(i);
+
+                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && existingColor != null) {
                     // Preserve the existing color if present
-                    newColors.add(existing.getColor(i));
+                    newColors.add(existingColor);
                     newFlags.add(true);
                 } else {
                     // There is no color to apply
@@ -143,13 +145,14 @@ public class ColorizerMenu extends AbstractContainerMenu {
                 }
             } else {
                 // If any color is selected,
-                int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) & 0xFFFFFF;
+                // Force colors to be opaque
+                int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
                 Integer oldColor = existing.getColor(i);
                 newColors.add(newColor);
                 newFlags.add(true);
 
                 if (Objects.requireNonNullElse(existing.getBoolean(i), false) && oldColor != null) {
-                    if ((oldColor & 0xFFFFFF) != newColor) {
+                    if (oldColor != newColor) {
                         // If the selected color is different from the existing color,
                         // Update the part color with the selected color
                         hasChanged = true;
