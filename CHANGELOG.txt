@@ -2,6 +2,8 @@
 [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
 
 ## [Unreleased]
+## Fixed
+- Fix laser blade colorizer to always apply opaque colors to tools.
 
 ## [1.0.0]
 ### Added
