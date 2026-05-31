@@ -29,7 +29,6 @@ public class ModLanguageProvider extends LanguageProvider {
         this.add(ModItems.LB_PICKAXE, "Laser Blade Pickaxe");
         this.add(ModItems.LB_AXE, "Laser Blade Axe");
         this.add(ModItems.LB_HOE, "Laser Blade Hoe");
-        this.add(ModItems.LB_SPEAR, "Laser Blade Spear");
 
         // Tags: blocks
         this.add(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL, "Incorrect for Laser Blade Tool");

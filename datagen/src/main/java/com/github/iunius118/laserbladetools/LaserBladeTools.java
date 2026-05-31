@@ -20,14 +20,24 @@ public class LaserBladeTools {
         modEventBus.addListener(this::gatherData);
     }
 
-    private void gatherData(final GatherDataEvent.Client event) {
+    private void gatherData(final GatherDataEvent event) {
+        var dataGenerator = event.getGenerator();
+        var packOutput = dataGenerator.getPackOutput();
+        var lookupProvider = event.getLookupProvider();
+        var existingFileHelper = event.getExistingFileHelper();
+
         // Data
-        event.createBlockAndItemTags(ModBlockTagsProvider::new, ModItemTagsProvider::new);
-        event.createProvider(ModLootTableProvider::new);
-        event.createProvider(ModRecipeProvider.Runner::new);
+        final boolean includesServer = event.includeServer();
+        var blockTagsProvider = new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
+        dataGenerator.addProvider(includesServer, blockTagsProvider);
+        dataGenerator.addProvider(includesServer, new ModItemTagsProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
+        dataGenerator.addProvider(includesServer, new ModLootTableProvider(packOutput, lookupProvider));
+        dataGenerator.addProvider(includesServer, new ModRecipeProvider(packOutput, lookupProvider));
 
         // Assets
-        event.createProvider(ModLanguageProvider::new);
-        event.createProvider(ModModelProvider::new);
+        final boolean includesClient = event.includeClient();
+        dataGenerator.addProvider(includesClient, new ModLanguageProvider(packOutput));
+        dataGenerator.addProvider(includesClient, new ModBlockStateProvider(packOutput, existingFileHelper));
+        dataGenerator.addProvider(includesClient, new ModItemModelProvider(packOutput, existingFileHelper));
     }
 }
