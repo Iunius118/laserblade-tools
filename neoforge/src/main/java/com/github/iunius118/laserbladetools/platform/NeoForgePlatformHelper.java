@@ -4,9 +4,7 @@ import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
 import com.github.iunius118.laserbladetools.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
-
-import java.util.Objects;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class NeoForgePlatformHelper implements IPlatformHelper {
 
@@ -27,6 +25,6 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void sendColorSelectionPayloadToServer(ColorSelectionPayload payload) {
-        ClientPacketDistributor.sendToServer(payload);
+        PacketDistributor.sendToServer(payload);
     }
 }
