@@ -4,7 +4,9 @@
   "package": "com.github.iunius118.laserbladetools.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
-  "client": [],
+  "client": [
+    "client.ItemRendererMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
