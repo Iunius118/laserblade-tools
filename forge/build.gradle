@@ -25,7 +25,7 @@ minecraft {
     def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     // Automatically enable AccessTransformers if the file exists
     if (at.exists()) {
-        accessTransformer = true
+        accessTransformer = at
     }
 
     runs {
