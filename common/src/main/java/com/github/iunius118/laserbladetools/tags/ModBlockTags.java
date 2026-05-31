@@ -2,7 +2,7 @@ package com.github.iunius118.laserbladetools.tags;
 
 import com.github.iunius118.laserbladetools.CommonClass;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
@@ -14,6 +14,6 @@ public class ModBlockTags {
     }
 
     private static TagKey<Block> tagC(String path) {
-        return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
     }
 }
