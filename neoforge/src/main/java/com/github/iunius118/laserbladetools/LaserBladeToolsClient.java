@@ -25,10 +25,7 @@ public class LaserBladeToolsClient {
     }
 
     private void onItemColorHandlerEvent(RegisterColorHandlersEvent.Item event) {
-        event.register(new LaserBladeItemColor(), ModItems.LB_SWORD);
-        event.register(new LaserBladeItemColor(), ModItems.LB_SHOVEL);
-        event.register(new LaserBladeItemColor(), ModItems.LB_PICKAXE);
-        event.register(new LaserBladeItemColor(), ModItems.LB_AXE);
-        event.register(new LaserBladeItemColor(), ModItems.LB_HOE);
+        event.register(new LaserBladeItemColor(),
+                ModItems.LB_SWORD, ModItems.LB_SHOVEL, ModItems.LB_PICKAXE, ModItems.LB_AXE, ModItems.LB_HOE);
     }
 }

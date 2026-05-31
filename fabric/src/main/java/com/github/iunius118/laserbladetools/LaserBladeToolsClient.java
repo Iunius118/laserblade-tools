@@ -18,10 +18,7 @@ public class LaserBladeToolsClient implements ClientModInitializer {
     }
 
     private void registerItemColors() {
-        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(), ModItems.LB_SWORD);
-        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(), ModItems.LB_SHOVEL);
-        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(), ModItems.LB_PICKAXE);
-        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(), ModItems.LB_AXE);
-        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(), ModItems.LB_HOE);
+        ColorProviderRegistry.ITEM.register(new LaserBladeItemColor(),
+                ModItems.LB_SWORD, ModItems.LB_SHOVEL, ModItems.LB_PICKAXE, ModItems.LB_AXE, ModItems.LB_HOE);
     }
 }
