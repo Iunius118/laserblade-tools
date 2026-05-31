@@ -1,15 +1,16 @@
 package com.github.iunius118.laserbladetools.menu;
 
+import com.github.iunius118.laserbladetools.block.ModBlocks;
+import com.github.iunius118.laserbladetools.component.LBCustomModelData;
+import com.github.iunius118.laserbladetools.component.ModDataComponents;
 import com.github.iunius118.laserbladetools.item.LaserBladeColor;
 import com.github.iunius118.laserbladetools.tags.ModItemTags;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
         this.resultContainer = new ResultContainer();
 
         // Input slot
-        addSlot(new Slot(inputContainer, 0, INPUT_SLOT_X, INPUT_SLOT_Y) {
+        this.addSlot(new Slot(inputContainer, 0, INPUT_SLOT_X, INPUT_SLOT_Y) {
             @Override
             public boolean mayPlace(ItemStack itemStack) {
                 // Accept only laser blade tools
@@ -64,7 +65,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
         });
 
         // Output slot
-        addSlot(new Slot(resultContainer, 0, OUTPUT_SLOT_X, OUTPUT_SLOT_Y) {
+        this.addSlot(new Slot(resultContainer, 0, OUTPUT_SLOT_X, OUTPUT_SLOT_Y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
@@ -80,8 +81,17 @@ public class ColorizerMenu extends AbstractContainerMenu {
             }
         });
 
-        // Player inventory and hotbar slots
-        addStandardInventorySlots(playerInventory, PLAYER_INV_X, PLAYER_INV_Y);
+        // Player inventory extended slots
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 9; x++) {
+                this.addSlot(new Slot(playerInventory, x + (y + 1) * 9, PLAYER_INV_X + x * 18, PLAYER_INV_Y + y * 18));
+            }
+        }
+
+        // Player inventory hotbar slots
+        for (int x = 0; x < 9; x++) {
+            this.addSlot(new Slot(playerInventory, x, PLAYER_INV_X + x * 18, PLAYER_INV_Y + 58));
+        }
 
         // Data slots
         for (int i = 0; i < NUM_PARTS; i++) {
@@ -98,6 +108,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
     private void updateResult() {
         ItemStack input = inputContainer.getItem(0);
+        ItemStack result = resultContainer.getItem(0);
 
         if (input.isEmpty()) {
             resultContainer.setItem(0, ItemStack.EMPTY);
@@ -105,12 +116,17 @@ public class ColorizerMenu extends AbstractContainerMenu {
             resultContainer.setItem(0, applyColors(input));
         }
 
-        this.broadcastChanges();
+        // Compare the instances, as the result slot will contain a different instance if it has been modified
+        if (result != resultContainer.getItem(0)) {
+            // If the result slot has been modified, notify the client to update it
+            this.broadcastChanges();
+        }
     }
 
     public ItemStack applyColors(ItemStack input) {
         boolean hasChanged = false;
-        CustomModelData existing = input.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
+        LBCustomModelData existing =
+                input.getOrDefault(ModDataComponents.LB_CUSTOM_MODEL_DATA, LBCustomModelData.EMPTY);
 
         if (existing.flags().isEmpty() && !existing.colors().isEmpty()) {
             // Fix the data if it has colors but no flags (for backward compatibility)
@@ -120,7 +136,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
                 fixedFlags.add(true);
             }
 
-            existing =  new CustomModelData(existing.floats(), fixedFlags, existing.strings(), existing.colors());
+            existing =  new LBCustomModelData(existing.floats(), fixedFlags, existing.strings(), existing.colors());
             hasChanged = true;
         }
 
@@ -132,9 +148,11 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
             if (colorIndex == 0) {
                 // If "Uncolored" is selected,
-                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && existing.getColor(i) != null) {
+                Integer existingColor = existing.getColor(i);
+
+                if (Objects.requireNonNullElse(existing.getBoolean(i), false) && existingColor != null) {
                     // Preserve the existing color if present
-                    newColors.add(existing.getColor(i));
+                    newColors.add(existingColor);
                     newFlags.add(true);
                 } else {
                     // There is no color to apply
@@ -143,13 +161,14 @@ public class ColorizerMenu extends AbstractContainerMenu {
                 }
             } else {
                 // If any color is selected,
-                int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) & 0xFFFFFF;
+                // Force colors to be opaque
+                int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
                 Integer oldColor = existing.getColor(i);
                 newColors.add(newColor);
                 newFlags.add(true);
 
                 if (Objects.requireNonNullElse(existing.getBoolean(i), false) && oldColor != null) {
-                    if ((oldColor & 0xFFFFFF) != newColor) {
+                    if (oldColor != newColor) {
                         // If the selected color is different from the existing color,
                         // Update the part color with the selected color
                         hasChanged = true;
@@ -164,8 +183,8 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
         if (hasChanged) {
             ItemStack output = input.copy();
-            output.set(DataComponents.CUSTOM_MODEL_DATA,
-                    new CustomModelData(existing.floats(), newFlags, existing.strings(), newColors));
+            output.set(ModDataComponents.LB_CUSTOM_MODEL_DATA,
+                    new LBCustomModelData(existing.floats(), newFlags, existing.strings(), newColors));
             return output;
         }
 
@@ -233,7 +252,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return access.evaluate((level, pos) -> player.isWithinBlockInteractionRange(pos, 4.0), true);
+        return stillValid(this.access, player, ModBlocks.COLORIZER);
     }
 
     @Override

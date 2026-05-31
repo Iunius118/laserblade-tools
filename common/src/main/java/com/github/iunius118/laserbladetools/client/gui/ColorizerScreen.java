@@ -2,25 +2,24 @@ package com.github.iunius118.laserbladetools.client.gui;
 
 import com.github.iunius118.laserbladetools.CommonClass;
 import com.github.iunius118.laserbladetools.Constants;
+import com.github.iunius118.laserbladetools.component.LBCustomModelData;
+import com.github.iunius118.laserbladetools.component.ModDataComponents;
 import com.github.iunius118.laserbladetools.item.LaserBladeColor;
 import com.github.iunius118.laserbladetools.menu.ColorizerMenu;
 import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerListener;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -29,7 +28,7 @@ import java.util.List;
 
 public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> implements ContainerListener {
 	// GUI texture
-	private static final Identifier TEXTURE = CommonClass.modLocation("textures/gui/colorizer.png");
+	private static final ResourceLocation TEXTURE = CommonClass.modLocation("textures/gui/colorizer.png");
 	// GUI size (match texture)
 	private static final int GUI_WIDTH = 176;
 	private static final int GUI_HEIGHT = 216;
@@ -60,17 +59,13 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 	/**
 	 * Armor stand preview entity (client only)
 	 */
-	private final ArmorStandRenderState armorStandPreview = new ArmorStandRenderState();
+	private ArmorStand armorStandPreview;
 
 	public ColorizerScreen(ColorizerMenu menu, Inventory inventory, Component title) {
-		super(menu, inventory, title, GUI_WIDTH, GUI_HEIGHT);
-
-		// Init armor stand preview
-		armorStandPreview.entityType = EntityType.ARMOR_STAND;
-		armorStandPreview.showBasePlate = false;
-		armorStandPreview.showArms = true;
-		armorStandPreview.xRot = 25.0F;
-		armorStandPreview.bodyRot = 210.0F;
+		super(menu, inventory, title);
+        this.imageWidth = GUI_WIDTH;
+        this.imageHeight = GUI_HEIGHT;
+        this.inventoryLabelY = this.imageHeight - 94;
 	}
 
 	@Override
@@ -86,8 +81,8 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 				case 2 -> Component.translatable(Constants.Colorizer.PART_INNER_BLADE);
 				default -> Component.empty();
 			};
-			colorButtons[i] = CycleButton.builder(ColorizerScreen::getColorName,
-							this.menu.getColorIndex(part))
+			colorButtons[i] = CycleButton.builder(ColorizerScreen::getColorName)
+                    .withInitialValue(this.menu.getColorIndex(part))
 					.withValues(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
 					.create(
 							leftPos + COLOR_BTN_X,
@@ -102,6 +97,14 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 			addRenderableWidget(colorButtons[part]);
 		}
 
+        // Init armor stand preview
+        armorStandPreview = new ArmorStand(this.minecraft.level, 0.0, 0.0, 0.0);
+        armorStandPreview.setNoBasePlate(true);
+        armorStandPreview.setShowArms(true);
+        armorStandPreview.yBodyRot = 210.0F;
+        armorStandPreview.setXRot(25.0F);
+        armorStandPreview.yHeadRot = this.armorStandPreview.getYRot();
+        armorStandPreview.yHeadRotO = this.armorStandPreview.getYRot();
 		updateArmorStandPreview(this.menu.getSlot(ColorizerMenu.OUTPUT_SLOT).getItem());
 	}
 
@@ -114,25 +117,32 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 		return Component.translatable("color.minecraft." + dyeColor.getName());
 	}
 
-	@Override
-	public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float renderTicks) {
-		super.extractBackground(graphics, mouseX, mouseY, renderTicks);
-		int x = (this.width - this.imageWidth) / 2;
-		int y = (this.height - this.imageHeight) / 2;
-		// Render background texture
-		graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0F, 0F, this.imageWidth, this.imageHeight, 256, 256);
-		// Render color previews
-		renderColorPreviews(graphics);
-		// Render armor stand
-		graphics.entity(armorStandPreview, ARMOR_STAND_SCALE, ARMOR_STAND_TRANSLATION, ARMOR_STAND_ANGLE, null,
-				this.leftPos + ARMOR_STAND_LEFT, this.topPos + ARMOR_STAND_TOP,
-				this.leftPos + ARMOR_STAND_RIGHT, this.topPos + ARMOR_STAND_BOTTOM);
-	}
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float renderTicks) {
+        renderBackground(guiGraphics, mouseX, mouseY, renderTicks);
+        super.render(guiGraphics, mouseX, mouseY, renderTicks);
+        renderTooltip(guiGraphics, mouseX, mouseY);
+    }
 
-	private void renderColorPreviews(GuiGraphicsExtractor graphics) {
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float renderTicks, int mouseX, int mouseY) {
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+        // Render background texture
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
+        // Render color previews
+        renderColorPreviews(guiGraphics);
+        // Render armor stand
+        InventoryScreen.renderEntityInInventory(guiGraphics,
+                this.leftPos + (ARMOR_STAND_LEFT + ARMOR_STAND_RIGHT) / 2F,
+                this.topPos + (ARMOR_STAND_TOP + ARMOR_STAND_BOTTOM) / 2F,
+                ARMOR_STAND_SCALE, ARMOR_STAND_TRANSLATION, ARMOR_STAND_ANGLE, null, armorStandPreview);
+    }
+
+	private void renderColorPreviews(GuiGraphics graphics) {
 		ItemStack inputItem = menu.getSlot(ColorizerMenu.INPUT_SLOT).getItem();
-		CustomModelData existingData = inputItem.isEmpty() ?
-                null : inputItem.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
+        LBCustomModelData existingData = inputItem.isEmpty() ?
+                null : inputItem.getOrDefault(ModDataComponents.LB_CUSTOM_MODEL_DATA, LBCustomModelData.EMPTY);
         List<Boolean> existingFlags = (existingData != null) ? existingData.flags() : List.of();
         List<Integer> existingColors = (existingData != null) ? existingData.colors() : List.of();
 
@@ -163,8 +173,8 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 
 			int x = leftPos + COLOR_PREVIEW_X;
 			int y = topPos + COLOR_BTN_Y_START + i * COLOR_BTN_Y_STEP + 1;
+            graphics.fill(x - 1, y - 1, x + COLOR_PREVIEW_SIZE + 1, y + COLOR_PREVIEW_SIZE + 1,  0xFF000000);
 			graphics.fill(x, y, x + COLOR_PREVIEW_SIZE, y + COLOR_PREVIEW_SIZE, argb);
-			graphics.outline(x, y, COLOR_PREVIEW_SIZE, COLOR_PREVIEW_SIZE, 0xFF000000);
 		}
 	}
 
@@ -180,14 +190,14 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 	}
 
 	private void updateArmorStandPreview(ItemStack itemStack) {
-		armorStandPreview.leftHandItemStack = ItemStack.EMPTY;
-		armorStandPreview.leftHandItemState.clear();
+        if (this.armorStandPreview == null) {
+            return;
+        }
 
 		if (!itemStack.isEmpty()) {
-			var itemModelResolver = this.minecraft.getItemModelResolver();
-			armorStandPreview.leftHandItemStack = itemStack.copy();
-			itemModelResolver.updateForTopItem(armorStandPreview.leftHandItemState, itemStack,
-					ItemDisplayContext.THIRD_PERSON_LEFT_HAND, null, null, 0);
-		}
+            this.armorStandPreview.setItemSlot(EquipmentSlot.OFFHAND, itemStack.copy());
+		} else {
+            this.armorStandPreview.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+        }
 	}
 }
