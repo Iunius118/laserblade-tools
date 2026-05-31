@@ -2,6 +2,8 @@
 [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
 
 ## [Unreleased]
+### Fixed
+- Fix smelting recipe domains by changing them from `minecraft` to the mod ID.
 
 ## [1.0.1+26.1.2]
 ### Changed
