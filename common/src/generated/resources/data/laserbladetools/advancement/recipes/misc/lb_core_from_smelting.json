@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lb_core_from_smelting"
+        "recipe": "laserbladetools:lb_core_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lb_core_from_smelting"
+      "laserbladetools:lb_core_from_smelting"
     ]
   }
 }
