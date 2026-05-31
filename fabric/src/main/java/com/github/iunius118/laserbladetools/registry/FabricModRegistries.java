@@ -2,13 +2,14 @@ package com.github.iunius118.laserbladetools.registry;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
+import com.github.iunius118.laserbladetools.component.ModDataComponents;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +19,7 @@ public class FabricModRegistries {
     public static void registerGameObjects() {
         registerBlocks();
         registerItems();
+        registerDataComponentTypes();
         registerMenuTypes();
         registerCreativeModeTabs();
     }
@@ -37,9 +39,15 @@ public class FabricModRegistries {
         items.register(Constants.Items.LB_PICKAXE.getPath(), ModItems.LB_PICKAXE);
         items.register(Constants.Items.LB_AXE.getPath(), ModItems.LB_AXE);
         items.register(Constants.Items.LB_HOE.getPath(), ModItems.LB_HOE);
-        items.register(Constants.Items.LB_SPEAR.getPath(), ModItems.LB_SPEAR);
 
         items.register(Constants.Blocks.COLORIZER.getPath(), ModItems.COLORIZER);
+    }
+
+    private static void registerDataComponentTypes() {
+        var dataComponentTypes = ModObjectRegistry.create(BuiltInRegistries.DATA_COMPONENT_TYPE, Constants.MOD_ID);
+
+        dataComponentTypes.register(Constants.DataComponentTypes.LB_CUSTOM_MODEL_DATA.getPath(),
+                ModDataComponents.LB_CUSTOM_MODEL_DATA);
     }
 
     private static void registerMenuTypes() {
@@ -55,7 +63,7 @@ public class FabricModRegistries {
     }
 
     private static CreativeModeTab getMainCreativeModeTab() {
-        return FabricCreativeModeTab.builder()
+        return FabricItemGroup.builder()
                 .icon(() -> new ItemStack(ModItems.LB_SWORD))
                 .title(Component.translatable(Constants.CreativeModeTabs.TITLE_MOD_MAIN))
                 .displayItems((params, output) -> {
@@ -73,7 +81,7 @@ public class FabricModRegistries {
         }
 
         public void register(String id, T object) {
-            Registry.register(registry, Identifier.fromNamespaceAndPath(modId, id), object);
+            Registry.register(registry, ResourceLocation.fromNamespaceAndPath(modId, id), object);
         }
     }
 }
