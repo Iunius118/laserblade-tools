@@ -115,7 +115,7 @@ public class ModRecipeProvider extends VanillaRecipeProvider {
                         200
                 )
                 .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
-                .save(this.output, getSmeltingRecipeName(ModItems.LB_CORE));
+                .save(this.output, getItemId(ModItems.LB_CORE) + "_from_smelting");
 
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(
@@ -133,7 +133,7 @@ public class ModRecipeProvider extends VanillaRecipeProvider {
                         100
                 )
                 .unlockedBy("has_lb_core", this.has(ModItemTags.LASER_BLADE_TOOL_MATERIALS))
-                .save(this.output, getBlastingRecipeName(ModItems.LB_CORE));
+                .save(this.output, getItemId(ModItems.LB_CORE) + "_from_blasting");
 
         // Laser blade colorizer
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.COLORIZER)
