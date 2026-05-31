@@ -54,10 +54,11 @@ public class LaserBladeColorizerBlock extends HorizontalDirectionalBlock {
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
 											   BlockHitResult hitResult) {
-		if (!level.isClientSide()) {
-			player.openMenu(state.getMenuProvider(level, pos));
-		}
-
-		return InteractionResult.SUCCESS;
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            player.openMenu(state.getMenuProvider(level, pos));
+            return InteractionResult.CONSUME;
+        }
 	}
 }
