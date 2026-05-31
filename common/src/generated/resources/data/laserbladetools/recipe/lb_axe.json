@@ -2,9 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#c:ingots/iron",
-    "D": "#c:gems/diamond",
-    "X": "#laserbladetools:laser_blade_tool_materials"
+    "#": {
+      "tag": "c:ingots/iron"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "X": {
+      "tag": "laserbladetools:laser_blade_tool_materials"
+    }
   },
   "pattern": [
     "DX",
@@ -12,6 +18,7 @@
     " #"
   ],
   "result": {
+    "count": 1,
     "id": "laserbladetools:lb_axe"
   }
 }

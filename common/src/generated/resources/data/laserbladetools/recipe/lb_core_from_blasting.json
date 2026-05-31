@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "item": "laserbladetools:lb_axe"
+    },
+    {
+      "item": "laserbladetools:lb_hoe"
+    },
+    {
+      "item": "laserbladetools:lb_pickaxe"
+    },
+    {
+      "item": "laserbladetools:lb_shovel"
+    },
+    {
+      "item": "laserbladetools:lb_sword"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "laserbladetools:lb_core"
+  }
+}
