@@ -1,7 +1,7 @@
 # Cheatsheet
 
 LaserBlade-Tools
-version 1.0.0
+version 0.1.0+1.21.1
 
 - [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools)
 
@@ -34,7 +34,7 @@ Laser blade tools can be smelted into laser blade cores using a furnace or blast
 
 Smelting/Blasting:
 
-    Laser Blade Axe/Hoe/Pickaxe/Shovel/Spear/Sword -> Laser Blade Core
+    Laser Blade Axe/Hoe/Pickaxe/Shovel/Sword -> Laser Blade Core
 
 ### Laser Blade Tools
 
@@ -44,7 +44,6 @@ Laser blade tools are tool items with laser blades.
 - Laser Blade Hoe
 - Laser Blade Pickaxe
 - Laser Blade Shovel
-- Laser Blade Spear
 - Laser Blade Sword
 
 Laser blade tools have performance comparable to diamond tools.
@@ -108,19 +107,6 @@ Crafting (shaped recipe):
     |   | # |   |
     |   | # |   |
 
-#### Laser Blade Spear
-
-- Attack damage: 4
-- Attack speed: 0.95
-
-Crafting (shaped recipe):
-
-    Laser Blade Spear
-    2x Iron Ingot (#) and 1x Laser Blade Core (X)
-    |   |   | X |
-    |   | # |   |
-    | # |   |   |
-
 #### Laser Blade Sword
 
 - Attack damage: 7
@@ -160,9 +146,9 @@ The procedure for changing the colors of laser blade tools is as follows:
 
 ### Laser Blade Tool Coloring
 
-The colors of each part of laser blade tools are stored using the `minecraft:custom_model_data` component.
+The colors of each part of laser blade tools are stored using the `laserbladetools:custom_model_data` component.
 
-    minecraft:custom_model_data={
+    laserbladetools:custom_model_data={
       flags:[(is handle color set),(is outer blade color set),(is inner blade color set)],
       colors:[(handle color),(outer blade color),(inner blade color)]
     }
@@ -174,5 +160,4 @@ otherwise, they are rendered using the default colors specified by the item mode
 
 ### Laser Blade Rendering
 
-This mod uses mixins to assign a custom unlit render type to specific models.
-The targets are item models in the `laserbladetools` domain whose file names end with `_blade`.
+(WIP)

@@ -3,17 +3,14 @@
 
 ## [Unreleased]
 
-## [1.0.0]
+## [0.1.0+1.21.1]
 ### Added
-- NeoForge version - Require NeoForge 26.1.2.66-beta.
-- Forge version - Require Minecraft Forge 64.0.8.
-- Fabric version - Require Fabric Loader 0.19.2 and Fabric API 0.150.0+26.1.2.
+- NeoForge version - Require NeoForge 21.1.230.
+- Forge version - Require Minecraft Forge 52.1.14.
+- Fabric version - Require Fabric Loader 0.19.2 and Fabric API 0.116.12+1.21.1.
 - Add Laser Blade Core for laser blade tool material.
-- Add Laser Blade Sword, Shovel, Pickaxe, Axe, Hoe and Spear.
+- Add Laser Blade Sword, Shovel, Pickaxe, Axe and Hoe.
 - Add Laser Blade Colorizer block to recolor laser blade tools.
 - Add `laserbladetools:colorizer_can_change_color` item tag to specify which items laser blade colorizer can accept.
+- Add `laserbladetools:custom_model_data` component to tint laser blade tools.
 - Add furnace and blast furnace recipes for extracting laser blade cores from laser blade tools.
-
-### Changed
-- Separate data generators from NeoForge version.
-- Laser blade tools colored in 1.0.0-beta.2 can have their colors repaired using laser blade colorizer.

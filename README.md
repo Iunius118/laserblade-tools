@@ -14,7 +14,7 @@ They have performance comparable to diamond tools.
 
 ## Requirements
 
-- Minecraft 26.1.2
+- Minecraft 1.21.1
 - NeoForge version - NeoForge
 - Forge version - Minecraft Forge
 - Fabric version - Fabric Loader and Fabric API
@@ -37,7 +37,6 @@ Laser blade tools:
 - Laser Blade Hoe
 - Laser Blade Pickaxe
 - Laser Blade Shovel
-- Laser Blade Spear
 - Laser Blade Sword
 
 \*Laser blades may be incompatible with some video options, some graphics improvement mods, and some shader packs.
