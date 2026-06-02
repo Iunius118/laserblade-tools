@@ -1,9 +1,10 @@
-// 1.21.1	2026-05-31T21:23:24.8636294	Tags for minecraft:item mod id laserbladetools
+// 1.21.1	2026-06-02T23:06:09.5474741	Tags for minecraft:item mod id laserbladetools
 2af64f93c632a9d4b09617c4254e04b20cc6d2c7 data/c/tags/item/tools/melee_weapon.json
 0468a30695661954bc6376263b2e4095c6f3c0d5 data/c/tags/item/tools/mining_tool.json
 0d5deeed589999a89343b1450b8c66d9af261ea3 data/laserbladetools/tags/item/colorizer_can_change_color.json
 2736dd5aa041abb99d3482342f7a4839a26784e0 data/laserbladetools/tags/item/laser_blade_tools.json
 95329a4245b3dda39ab1646a6fecf2af92cfba13 data/laserbladetools/tags/item/laser_blade_tool_materials.json
+2736dd5aa041abb99d3482342f7a4839a26784e0 data/laserbladetools/tags/item/uses_laser_blade_render_type.json
 9dec4ca3a69c27ca831fce9dc272ce3222f685f0 data/minecraft/tags/item/axes.json
 0468a30695661954bc6376263b2e4095c6f3c0d5 data/minecraft/tags/item/cluster_max_harvestables.json
 aa2f38986718d46408a3a22ceb68c1e24b583ee4 data/minecraft/tags/item/hoes.json

@@ -10,6 +10,7 @@ public class ModItemTags {
     public static final TagKey<Item> LASER_BLADE_TOOL_MATERIALS = tag("laser_blade_tool_materials");
     public static final TagKey<Item> LASER_BLADE_TOOLS = tag("laser_blade_tools");
     public static final TagKey<Item> COLORIZER_CAN_CHANGE_COLOR = tag("colorizer_can_change_color");
+    public static final TagKey<Item> USES_LASER_BLADE_RENDER_TYPE = tag("uses_laser_blade_render_type");
 
     private static TagKey<Item> tag(String id) {
         return TagKey.create(Registries.ITEM, CommonClass.modLocation(id));

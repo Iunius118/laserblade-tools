@@ -45,5 +45,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.LB_AXE)
                 .add(ModItems.LB_HOE);
         this.tag(ModItemTags.COLORIZER_CAN_CHANGE_COLOR).addTag(ModItemTags.LASER_BLADE_TOOLS);
+        this.tag(ModItemTags.USES_LASER_BLADE_RENDER_TYPE)
+                .add(ModItems.LB_SWORD)
+                .add(ModItems.LB_SHOVEL)
+                .add(ModItems.LB_PICKAXE)
+                .add(ModItems.LB_AXE)
+                .add(ModItems.LB_HOE);
     }
 }
