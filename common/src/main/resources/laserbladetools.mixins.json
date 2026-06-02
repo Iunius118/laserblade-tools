@@ -2,13 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.github.iunius118.laserbladetools.mixin",
+  "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [],
-  "client": [
-    "client.BakedQuadMaterialInfoAccessor",
-    "client.CuboidItemModelWrapperUnbakedMixin",
-    "client.RenderTypeInvoker"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1

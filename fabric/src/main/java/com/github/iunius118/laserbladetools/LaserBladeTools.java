@@ -22,7 +22,7 @@ public class LaserBladeTools implements ModInitializer {
     }
 
     private void registerPayloads() {
-        PayloadTypeRegistry.serverboundPlay().register(ColorSelectionPayload.TYPE, ColorSelectionPayload.STREAM_CODEC);
+        PayloadTypeRegistry.playC2S().register(ColorSelectionPayload.TYPE, ColorSelectionPayload.STREAM_CODEC);
         ServerPlayNetworking.registerGlobalReceiver(ColorSelectionPayload.TYPE,
                 (payload, context) -> ColorSelectionPayload.handle(payload, context.player()));
     }

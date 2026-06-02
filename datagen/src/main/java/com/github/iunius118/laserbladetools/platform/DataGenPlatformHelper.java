@@ -5,8 +5,6 @@ import com.github.iunius118.laserbladetools.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 
-import java.util.Objects;
-
 public class DataGenPlatformHelper implements IPlatformHelper {
 
     @Override
@@ -21,7 +19,7 @@ public class DataGenPlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isDevelopmentEnvironment() {
-        return !Objects.requireNonNull(FMLLoader.getCurrentOrNull()).isProduction();
+        return !FMLLoader.isProduction();
     }
 
     @Override

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "laserbladetools:item/lb_hoe",
+    "layer1": "laserbladetools:item/lb_hoe_blade_0",
+    "layer2": "laserbladetools:item/lb_hoe_blade_1"
+  }
+}

@@ -2,10 +2,18 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "#c:ingots/iron",
-    "D": "#c:gems/diamond",
-    "G": "#c:dusts/glowstone",
-    "R": "#c:dusts/redstone"
+    "#": {
+      "tag": "c:ingots/iron"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "G": {
+      "tag": "c:dusts/glowstone"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    }
   },
   "pattern": [
     " #D",
@@ -13,6 +21,7 @@
     "R# "
   ],
   "result": {
+    "count": 1,
     "id": "laserbladetools:lb_core"
   }
 }

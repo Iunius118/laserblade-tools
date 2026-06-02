@@ -2,14 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "minecraft:crafting_table",
-    "X": "#laserbladetools:laser_blade_tool_materials"
+    "#": {
+      "item": "minecraft:crafting_table"
+    },
+    "X": {
+      "tag": "laserbladetools:laser_blade_tool_materials"
+    }
   },
   "pattern": [
     "X",
     "#"
   ],
   "result": {
+    "count": 1,
     "id": "laserbladetools:colorizer"
   }
 }

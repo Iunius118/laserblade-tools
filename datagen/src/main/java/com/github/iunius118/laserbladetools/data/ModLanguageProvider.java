@@ -29,7 +29,6 @@ public class ModLanguageProvider extends LanguageProvider {
         this.add(ModItems.LB_PICKAXE, "Laser Blade Pickaxe");
         this.add(ModItems.LB_AXE, "Laser Blade Axe");
         this.add(ModItems.LB_HOE, "Laser Blade Hoe");
-        this.add(ModItems.LB_SPEAR, "Laser Blade Spear");
 
         // Tags: blocks
         this.add(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL, "Incorrect for Laser Blade Tool");
@@ -37,6 +36,7 @@ public class ModLanguageProvider extends LanguageProvider {
         this.add(ModItemTags.LASER_BLADE_TOOL_MATERIALS, "Laser Blade Tool Materials");
         this.add(ModItemTags.LASER_BLADE_TOOLS, "Laser Blade Tools");
         this.add(ModItemTags.COLORIZER_CAN_CHANGE_COLOR, "Colorizer Can Change Color");
+        this.add(ModItemTags.USES_LASER_BLADE_RENDER_TYPE, "Uses Laser Blade Render Type");
 
         // Menu
         this.add(Constants.Colorizer.CONTAINER_COLORIZER, "Laser Blade Colorizer");

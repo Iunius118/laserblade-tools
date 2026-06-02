@@ -10,11 +10,11 @@
   "item.laserbladetools.lb_hoe": "Laser Blade Hoe",
   "item.laserbladetools.lb_pickaxe": "Laser Blade Pickaxe",
   "item.laserbladetools.lb_shovel": "Laser Blade Shovel",
-  "item.laserbladetools.lb_spear": "Laser Blade Spear",
   "item.laserbladetools.lb_sword": "Laser Blade Sword",
   "itemGroup.laserbladetools.main": "LaserBlade-Tools",
   "tag.block.laserbladetools.incorrect_for_laser_blade_tool": "Incorrect for Laser Blade Tool",
   "tag.item.laserbladetools.colorizer_can_change_color": "Colorizer Can Change Color",
   "tag.item.laserbladetools.laser_blade_tool_materials": "Laser Blade Tool Materials",
-  "tag.item.laserbladetools.laser_blade_tools": "Laser Blade Tools"
+  "tag.item.laserbladetools.laser_blade_tools": "Laser Blade Tools",
+  "tag.item.laserbladetools.uses_laser_blade_render_type": "Uses Laser Blade Render Type"
 }

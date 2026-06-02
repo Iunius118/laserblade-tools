@@ -2,6 +2,7 @@ package com.github.iunius118.laserbladetools.registry;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
+import com.github.iunius118.laserbladetools.component.ModDataComponents;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,7 @@ public class NeoForgeModRegistries {
     public static void registerGameObjects(IEventBus modEventBus) {
         registerBlocks(modEventBus);
         registerItems(modEventBus);
+        registerDataComponentTypes(modEventBus);
         registerMenuTypes(modEventBus);
         registerCreativeModeTabs(modEventBus);
     }
@@ -41,11 +43,19 @@ public class NeoForgeModRegistries {
         items.register(Constants.Items.LB_PICKAXE.getPath(), () -> ModItems.LB_PICKAXE);
         items.register(Constants.Items.LB_AXE.getPath(), () -> ModItems.LB_AXE);
         items.register(Constants.Items.LB_HOE.getPath(), () -> ModItems.LB_HOE);
-        items.register(Constants.Items.LB_SPEAR.getPath(), () -> ModItems.LB_SPEAR);
 
         items.register(Constants.Blocks.COLORIZER.getPath(), () -> ModItems.COLORIZER);
 
         items.register(modEventBus);
+    }
+
+    private static void registerDataComponentTypes(IEventBus modEventBus) {
+        var dataComponentTypes = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, Constants.MOD_ID);
+
+        dataComponentTypes.register(Constants.DataComponentTypes.LB_CUSTOM_MODEL_DATA.getPath(),
+                () -> ModDataComponents.LB_CUSTOM_MODEL_DATA);
+
+        dataComponentTypes.register(modEventBus);
     }
 
     private static void registerMenuTypes(IEventBus modEventBus) {
