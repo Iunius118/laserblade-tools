@@ -160,4 +160,6 @@ otherwise, they are rendered using the default colors specified by the item mode
 
 ### Laser Blade Rendering
 
-(WIP)
+This mod uses mixins to assign a custom unlit render type to specific layers of specific item models.
+The targets are layers with a tint index of 1 or greater in models of items included in
+the `laserbladetools:uses_laser_blade_render_type` item tag.
