@@ -27,7 +27,7 @@ def main():
 
     change_timestamp_of_files(base_file_name)
     date = datetime.now(timezone.utc).strftime('%Y%m%d')
-    zip_name = base_file_name #+ '_' + date
+    zip_name = base_file_name + '_' + date
     shutil.make_archive(base_file_name + '/' + zip_name, 'zip', root_dir = base_file_name + '/src')
 
 if __name__ == '__main__':
