@@ -8,7 +8,13 @@ Please refer to the LICENSE file included in each resource pack for its license.
 
 - Name: `laserbladetools_slim_tool_pack`
 - License: MIT License
+- Download: [CurseForge](https://www.curseforge.com/minecraft/texture-packs/laserblade-tools-slim-tool-textures)
 
-Replaces the Laser Blade Sword texture with a slimmer version.
+Replaces the textures of laser blade tools with slimmer versions.
 
-![LaserBlade-Tools: Slim sword texture](./laserbladetools_slim_sword_pack/src/pack.png)
+![Slim Laser Blade Sword Texture](./laserbladetools_slim_tool_pack/slim_lb_sword.png)
+
+The current version replaces the following textures:
+
+- Laser Blade Sword
+- Laser Blade Colorizer
