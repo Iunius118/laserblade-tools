@@ -1,0 +1,7 @@
+{
+  "parent": "laserbladetools:item/lb_sword_disp",
+  "textures": {
+    "layer0": "laserbladetools:item/lb_sword_blade_0",
+    "layer1": "laserbladetools:item/lb_sword_blade_1"
+  }
+}
