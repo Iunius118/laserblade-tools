@@ -3,6 +3,10 @@
 
 ## [Unreleased]
 
+## [1.1.0+26.1.2]
+### Changed
+- Increase the durability of laser blade tools from 2031 to 2311 to better match their crafting cost.
+
 ## [1.0.2+26.1.2]
 ### Fixed
 - Fix smelting recipe domains by changing them from `minecraft` to the mod ID.
