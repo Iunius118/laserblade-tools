@@ -14,10 +14,10 @@ import java.util.function.Supplier;
 public enum ModTiers implements Tier {
     LASER_BLADE(
             ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL,
-            Tiers.NETHERITE.getUses(),
+            Tiers.DIAMOND.getUses() + Tiers.IRON.getUses() * 3,
             Tiers.DIAMOND.getSpeed(),
             Tiers.DIAMOND.getAttackDamageBonus(),
-            Tiers.DIAMOND.getEnchantmentValue(),
+            Tiers.IRON.getEnchantmentValue(),
             () -> Ingredient.of(ModItemTags.LASER_BLADE_TOOL_MATERIALS));
 
     private final TagKey<Block> incorrectBlocksForDrops;
