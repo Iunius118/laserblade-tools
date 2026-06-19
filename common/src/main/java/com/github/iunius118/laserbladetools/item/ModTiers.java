@@ -17,7 +17,7 @@ public enum ModTiers implements Tier {
             Tiers.NETHERITE.getUses(),
             Tiers.DIAMOND.getSpeed(),
             Tiers.DIAMOND.getAttackDamageBonus(),
-            Tiers.DIAMOND.getEnchantmentValue(),
+            Tiers.IRON.getEnchantmentValue(),
             () -> Ingredient.of(ModItemTags.LASER_BLADE_TOOL_MATERIALS));
 
     private final TagKey<Block> incorrectBlocksForDrops;
