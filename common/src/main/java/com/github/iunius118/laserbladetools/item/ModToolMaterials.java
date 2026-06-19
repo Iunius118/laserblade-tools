@@ -7,7 +7,7 @@ import net.minecraft.world.item.ToolMaterial;
 public class ModToolMaterials {
 	public static final ToolMaterial LASER_BLADE = new ToolMaterial(
 			ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL,
-			ToolMaterial.NETHERITE.durability(),
+			ToolMaterial.DIAMOND.durability() + ToolMaterial.IRON.durability() * 3,
 			ToolMaterial.DIAMOND.speed(),
 			ToolMaterial.DIAMOND.attackDamageBonus(),
 			ToolMaterial.IRON.enchantmentValue(),
