@@ -35,10 +35,10 @@ public interface IPlatformHelper {
         return isDevelopmentEnvironment() ? "development" : "production";
     }
 
-	/**
+    /**
      * Send {@link ColorSelectionPayload} to server.
      *
-	 * @param payload Payload to send.
-	 */
+     * @param payload Payload to send.
+     */
     void sendColorSelectionPayloadToServer(ColorSelectionPayload payload);
 }
