@@ -1,7 +1,7 @@
 # Cheatsheet
 
 LaserBlade-Tools
-version 0.1.0+1.21.1
+version 0.2.0+1.21.1
 
 - [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools)
 
@@ -50,7 +50,7 @@ Laser blade tools have performance comparable to diamond tools.
 
 - Mining level: Diamond tool
 - Base mining speed: 8
-- Durability: 2031
+- Durability: 2311
 - Repair material: Laser blade core
 
 A laser blade colorizer block can be used to change the colors of laser blade tools.
