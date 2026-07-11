@@ -1,7 +1,7 @@
 # Cheatsheet
 
 LaserBlade-Tools
-version 1.1.0+26.1.2
+version 1.1.1+26.1.2
 
 - [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools)
 
@@ -175,4 +175,4 @@ otherwise, they are rendered using the default colors specified by the item mode
 ### Laser Blade Rendering
 
 This mod uses mixins to assign a custom unlit render type to specific models.
-The targets are item models in the `laserbladetools` domain whose file names end with `_blade`.
+The targets are item models in the `laserbladetools` namespace whose file names end with `_blade`.
