@@ -1,5 +1,6 @@
 package com.github.iunius118.laserbladetools.menu;
 
+import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.LaserBladeColor;
 import com.github.iunius118.laserbladetools.tags.ModItemTags;
 import net.minecraft.core.component.DataComponents;
@@ -241,7 +242,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return access.evaluate((level, pos) -> player.isWithinBlockInteractionRange(pos, 4.0), true);
+        return stillValid(this.access, player, ModBlocks.COLORIZER);
     }
 
     @Override
