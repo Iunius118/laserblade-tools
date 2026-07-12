@@ -5,7 +5,7 @@
 
 ## [1.1.1+26.1.2]
 ### Fixed
-- Fix behavior when closing laser blade colorizer GUI
+- Fix behavior when closing laser blade colorizer GUI.
 
 ## [1.1.0+26.1.2]
 ### Changed
