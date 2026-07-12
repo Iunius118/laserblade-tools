@@ -1,7 +1,7 @@
 # Cheatsheet
 
 LaserBlade-Tools
-version 0.2.0+1.21.1
+version 0.2.1+1.21.1
 
 - [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools)
 
@@ -168,9 +168,11 @@ the `laserbladetools:uses_laser_blade_render_type` item tag.
 
 Additional resource pack for LaserBlade-Tools.
 
+- [Readme](https://github.com/Iunius118/laserblade-tools/blob/main/resourcepacks/README.md)
+
 ### LaserBlade-Tools: Slim sword texture
 
 Replaces the Laser Blade Sword texture with a slimmer version.
 
-- File: [laserbladetools_slim_sword_pack.zip](https://github.com/Iunius118/laserblade-tools/raw/refs/heads/main/resourcepacks/laserbladetools_slim_sword_pack/laserbladetools_slim_sword_pack.zip)
+- Download: [CurseForge](https://www.curseforge.com/minecraft/texture-packs/laserblade-tools-slim-tool-textures)
 - License: MIT License
