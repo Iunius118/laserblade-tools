@@ -176,3 +176,16 @@ otherwise, they are rendered using the default colors specified by the item mode
 
 This mod uses mixins to assign a custom unlit render type to specific models.
 The targets are item models in the `laserbladetools` namespace whose file names end with `_blade`.
+
+## Resource Pack
+
+Additional resource pack for LaserBlade-Tools.
+
+- [Readme](https://github.com/Iunius118/laserblade-tools/blob/main/resourcepacks/README.md)
+
+### LaserBlade-Tools: Slim sword texture
+
+Replaces the Laser Blade Sword texture with a slimmer version.
+
+- Download: [CurseForge](https://www.curseforge.com/minecraft/texture-packs/laserblade-tools-slim-tool-textures)
+- License: MIT License
