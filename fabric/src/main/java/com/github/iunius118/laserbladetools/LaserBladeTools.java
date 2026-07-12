@@ -1,7 +1,6 @@
 package com.github.iunius118.laserbladetools;
 
 import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
-import com.github.iunius118.laserbladetools.registry.FabricModRegistries;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -13,9 +12,6 @@ public class LaserBladeTools implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         //Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
-
-        // Register mod game objects
-        FabricModRegistries.registerGameObjects();
 
         // Register listeners
         registerPayloads();

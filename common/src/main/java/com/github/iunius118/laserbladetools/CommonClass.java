@@ -1,5 +1,6 @@
 package com.github.iunius118.laserbladetools;
 
+import com.github.iunius118.laserbladetools.registry.ModRegistries;
 import net.minecraft.resources.ResourceLocation;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
@@ -23,6 +24,9 @@ public class CommonClass {
         //if (Services.PLATFORM.isModLoaded("laserbladetools")) {
         //    Constants.LOG.info("Hello to LaserBlade-Tools");
         //}
+
+        // Register mod game objects
+        ModRegistries.registerGameObjects();
     }
 
     public static ResourceLocation modLocation(String name) {
