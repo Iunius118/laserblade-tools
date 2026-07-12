@@ -259,6 +259,6 @@ public class ColorizerMenu extends AbstractContainerMenu {
     public void removed(Player player) {
         super.removed(player);
         // Return the item in the input slot to the player when the GUI is closed
-        clearContainer(player, inputContainer);
+        this.access.execute((level, pos) -> this.clearContainer(player, this.inputContainer));
     }
 }
