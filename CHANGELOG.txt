@@ -2,6 +2,8 @@
 [LaserBlade-Tools](https://github.com/Iunius118/laserblade-tools).
 
 ## [Unreleased]
+### Fixed
+- Fix behavior when closing laser blade colorizer GUI.
 
 ## [0.2.0+1.21.1]
 ### Changed
