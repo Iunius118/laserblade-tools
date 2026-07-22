@@ -45,10 +45,6 @@ repositories {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com'
     }
-
-    // Cloth Config
-    maven { url "https://maven.shedaniel.me/" }
-    maven { url "https://maven.terraformersmc.com/releases/" }
 }
 
 // Declare capabilities on the outgoing configurations.
