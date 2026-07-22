@@ -45,7 +45,7 @@ public record ForgeModObjectRegistry<V, T extends V>(DeferredRegister<V> deferre
 
         @Override
         public boolean areComponentsBound() {
-            return false;
+            return object.getHolder().map(Holder::areComponentsBound).orElse(false);
         }
 
         @Override
@@ -65,7 +65,7 @@ public record ForgeModObjectRegistry<V, T extends V>(DeferredRegister<V> deferre
 
         @Override
         public boolean is(TagKey<T> tag) {
-            return false;
+            return object.getHolder().map(holder -> holder.is(tag)).orElse(false);
         }
 
         @Override
@@ -75,12 +75,12 @@ public record ForgeModObjectRegistry<V, T extends V>(DeferredRegister<V> deferre
 
         @Override
         public Stream<TagKey<T>> tags() {
-            return Stream.empty();
+            return object.getHolder().map(Holder::tags).orElse(Stream.empty());
         }
 
         @Override
         public DataComponentMap components() {
-            return null;
+            return object.getHolder().map(Holder::components).orElse(DataComponentMap.EMPTY);
         }
 
         @Override
@@ -100,7 +100,7 @@ public record ForgeModObjectRegistry<V, T extends V>(DeferredRegister<V> deferre
 
         @Override
         public boolean canSerializeIn(HolderOwner<T> registry) {
-            return false;
+            return object.getHolder().map(holder -> holder.canSerializeIn(registry)).orElse(false);
         }
     }
 }
