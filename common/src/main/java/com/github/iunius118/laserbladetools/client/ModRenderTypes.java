@@ -19,43 +19,43 @@ import net.minecraft.util.Util;
 import java.util.function.BiFunction;
 
 public class ModRenderTypes {
-	// Unlit render pipeline using entity shader
-	public static final RenderPipeline UNLIT_TRANSLUCENT_PIPELINE = RenderPipeline.builder()
-			.withLocation("pipeline/lb_unlit_translucent")
-			.withBindGroupLayout(BindGroupLayouts.GLOBALS)
-			.withBindGroupLayout(BindGroupLayouts.MATRICES_PROJECTION)
-			.withBindGroupLayout(BindGroupLayouts.FOG)
-			.withBindGroupLayout(BindGroupLayouts.LIGHTING)
-			.withVertexShader("core/entity")
-			.withFragmentShader("core/entity")
-			.withBindGroupLayout(BindGroupLayouts.SAMPLER0)
-			.withVertexBinding(0, DefaultVertexFormat.ENTITY)
-			.withPrimitiveTopology(PrimitiveTopology.QUADS)
-			.withDepthStencilState(DepthStencilState.DEFAULT)
-			.withShaderDefine("EMISSIVE")
-			.withShaderDefine("NO_OVERLAY")
-			.withShaderDefine("NO_CARDINAL_LIGHTING")
-			.withShaderDefine("ALPHA_CUTOUT", 0.1F)
-			.withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
-			.build();
+    // Unlit render pipeline using entity shader
+    public static final RenderPipeline UNLIT_TRANSLUCENT_PIPELINE = RenderPipeline.builder()
+            .withLocation("pipeline/lb_unlit_translucent")
+            .withBindGroupLayout(BindGroupLayouts.GLOBALS)
+            .withBindGroupLayout(BindGroupLayouts.MATRICES_PROJECTION)
+            .withBindGroupLayout(BindGroupLayouts.FOG)
+            .withBindGroupLayout(BindGroupLayouts.LIGHTING)
+            .withVertexShader("core/entity")
+            .withFragmentShader("core/entity")
+            .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+            .withVertexBinding(0, DefaultVertexFormat.ENTITY)
+            .withPrimitiveTopology(PrimitiveTopology.QUADS)
+            .withDepthStencilState(DepthStencilState.DEFAULT)
+            .withShaderDefine("EMISSIVE")
+            .withShaderDefine("NO_OVERLAY")
+            .withShaderDefine("NO_CARDINAL_LIGHTING")
+            .withShaderDefine("ALPHA_CUTOUT", 0.1F)
+            .withColorTargetState(new ColorTargetState(BlendFunction.TRANSLUCENT))
+            .build();
 
-	private static final BiFunction<String, Identifier, RenderType> UNLIT_TRANSLUCENT = Util.memoize(
-			(name, texture) -> {
-				RenderSetup renderSetup = RenderSetup.builder(UNLIT_TRANSLUCENT_PIPELINE)
-						.withTexture("Sampler0", texture)
-						.setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET)
-						.sortOnUpload()
-						.setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE)
-						.createRenderSetup();
-				return RenderTypeInvoker.invokeCreate(name, renderSetup);
-			}
-	);
+    private static final BiFunction<String, Identifier, RenderType> UNLIT_TRANSLUCENT = Util.memoize(
+            (name, texture) -> {
+                RenderSetup renderSetup = RenderSetup.builder(UNLIT_TRANSLUCENT_PIPELINE)
+                        .withTexture("Sampler0", texture)
+                        .setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET)
+                        .sortOnUpload()
+                        .setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE)
+                        .createRenderSetup();
+                return RenderTypeInvoker.invokeCreate(name, renderSetup);
+            }
+    );
 
-	public static RenderType unlit(Identifier texture) {
-		return UNLIT_TRANSLUCENT.apply(Constants.MOD_ID + ":lb_unlit", texture);
-	}
+    public static RenderType unlit(Identifier texture) {
+        return UNLIT_TRANSLUCENT.apply(Constants.MOD_ID + ":lb_unlit", texture);
+    }
 
-	public static RenderType unlitItem() {
-		return unlit(TextureAtlas.LOCATION_ITEMS);
-	}
+    public static RenderType unlitItem() {
+        return unlit(TextureAtlas.LOCATION_ITEMS);
+    }
 }

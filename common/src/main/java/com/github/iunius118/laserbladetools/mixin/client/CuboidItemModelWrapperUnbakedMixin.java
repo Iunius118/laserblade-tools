@@ -26,32 +26,32 @@ import java.util.List;
 
 @Mixin(value = CuboidItemModelWrapper.Unbaked.class, remap = false)
 public abstract class CuboidItemModelWrapperUnbakedMixin {
-	@Shadow
-	@Final
-	private Identifier model;
+    @Shadow
+    @Final
+    private Identifier model;
 
-	@Unique
-	private static final RenderType UNLIT_ITEM_SHEET = ModRenderTypes.unlitItem();
+    @Unique
+    private static final RenderType UNLIT_ITEM_SHEET = ModRenderTypes.unlitItem();
 
-	@Inject(method = "bake",
-			at = @At(value = "INVOKE",
-					target = "Lnet/minecraft/client/renderer/item/CuboidItemModelWrapper;" +
-							"validateAtlasUsage(Ljava/util/List;)V"),
-			locals = LocalCapture.CAPTURE_FAILSOFT)
-	private void onBake(ItemModel.BakingContext context, Matrix4fc transformation,
-						CallbackInfoReturnable<ItemModel> cir,
-						ModelBaker baker, ResolvedModel resolvedModel, TextureSlots textureSlots, QuadCollection quads,
-						ModelRenderProperties properties) {
-		// Apply unlit render type to this mod's blade item models
-		if (model.getNamespace().equals(Constants.MOD_ID) && model.getPath().endsWith("_blade")) {
-			List<BakedQuad> quadList = quads.getAll();
+    @Inject(method = "bake",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/client/renderer/item/CuboidItemModelWrapper;" +
+                            "validateAtlasUsage(Ljava/util/List;)V"),
+            locals = LocalCapture.CAPTURE_FAILSOFT)
+    private void onBake(ItemModel.BakingContext context, Matrix4fc transformation,
+                        CallbackInfoReturnable<ItemModel> cir,
+                        ModelBaker baker, ResolvedModel resolvedModel, TextureSlots textureSlots, QuadCollection quads,
+                        ModelRenderProperties properties) {
+        // Apply unlit render type to this mod's blade item models
+        if (model.getNamespace().equals(Constants.MOD_ID) && model.getPath().endsWith("_blade")) {
+            List<BakedQuad> quadList = quads.getAll();
 
-			for (BakedQuad bakedQuad: quadList) {
-				var materialInfo = (BakedQuadMaterialInfoAccessor)(Object) bakedQuad.materialInfo();
-				materialInfo.setItemRenderType(UNLIT_ITEM_SHEET);
-				materialInfo.setShade(false);
-				materialInfo.setLightEmission(15);
-			}
-		}
-	}
+            for (BakedQuad bakedQuad: quadList) {
+                var materialInfo = (BakedQuadMaterialInfoAccessor)(Object) bakedQuad.materialInfo();
+                materialInfo.setItemRenderType(UNLIT_ITEM_SHEET);
+                materialInfo.setShade(false);
+                materialInfo.setLightEmission(15);
+            }
+        }
+    }
 }

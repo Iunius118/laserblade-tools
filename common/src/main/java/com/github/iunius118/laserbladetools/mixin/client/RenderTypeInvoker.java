@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value = RenderType.class, remap = false)
 public interface RenderTypeInvoker {
 
-	@Invoker
-	static RenderType invokeCreate(String name, RenderSetup state) {
-		throw new AssertionError();
-	}
+    @Invoker
+    static RenderType invokeCreate(String name, RenderSetup state) {
+        throw new AssertionError();
+    }
 }

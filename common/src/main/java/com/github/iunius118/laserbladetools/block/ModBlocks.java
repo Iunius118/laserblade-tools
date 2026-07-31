@@ -10,13 +10,13 @@ import net.minecraft.world.level.material.MapColor;
 
 public class ModBlocks {
     public static final Block COLORIZER = new LaserBladeColorizerBlock(
-			createProperties(Constants.Blocks.COLORIZER)
-					.mapColor(MapColor.WOOD)
-					.instrument(NoteBlockInstrument.BASS)
-					.strength(2.5F)
-					.sound(SoundType.WOOD));
+            createProperties(Constants.Blocks.COLORIZER)
+                    .mapColor(MapColor.WOOD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.5F)
+                    .sound(SoundType.WOOD));
 
-	private static BlockBehaviour.Properties createProperties(ResourceKey<Block> key) {
-		return BlockBehaviour.Properties.of().setId(key);
-	}
+    private static BlockBehaviour.Properties createProperties(ResourceKey<Block> key) {
+        return BlockBehaviour.Properties.of().setId(key);
+    }
 }
