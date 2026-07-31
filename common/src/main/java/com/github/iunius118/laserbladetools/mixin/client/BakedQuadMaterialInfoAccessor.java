@@ -9,15 +9,15 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value = BakedQuad.MaterialInfo.class, remap = false)
 public interface BakedQuadMaterialInfoAccessor {
 
-	@Accessor
-	@Mutable
-	void setItemRenderType(RenderType renderType);
+    @Accessor
+    @Mutable
+    void setItemRenderType(RenderType renderType);
 
-	@Accessor
-	@Mutable
-	void setShade(boolean shade);
+    @Accessor
+    @Mutable
+    void setShade(boolean shade);
 
-	@Accessor
-	@Mutable
-	void setLightEmission(int lightEmission);
+    @Accessor
+    @Mutable
+    void setLightEmission(int lightEmission);
 }

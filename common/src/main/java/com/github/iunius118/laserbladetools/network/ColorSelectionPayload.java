@@ -18,29 +18,29 @@ import net.minecraft.world.entity.player.Player;
  * @param colorIndex Selected color index (0 = unchanged, 1-16 = DyeColor)
  */
 public record ColorSelectionPayload(int part, int colorIndex) implements CustomPacketPayload {
-	public static final Type<ColorSelectionPayload> TYPE = new Type<>(CommonClass.modLocation("colorizer"));
+    public static final Type<ColorSelectionPayload> TYPE = new Type<>(CommonClass.modLocation("colorizer"));
 
-	public static final StreamCodec<RegistryFriendlyByteBuf, ColorSelectionPayload> STREAM_CODEC =
-			StreamCodec.composite(
-					ByteBufCodecs.INT, ColorSelectionPayload::part,
-					ByteBufCodecs.INT, ColorSelectionPayload::colorIndex,
-					ColorSelectionPayload::new
-			);
+    public static final StreamCodec<RegistryFriendlyByteBuf, ColorSelectionPayload> STREAM_CODEC =
+            StreamCodec.composite(
+                    ByteBufCodecs.INT, ColorSelectionPayload::part,
+                    ByteBufCodecs.INT, ColorSelectionPayload::colorIndex,
+                    ColorSelectionPayload::new
+            );
 
-	@Override
-	public Type<? extends CustomPacketPayload> type() {
-		return TYPE;
-	}
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
+    }
 
-	public static void handle(ColorSelectionPayload payload, Player player) {
-		if (player instanceof ServerPlayer serverPlayer) {
-			if (serverPlayer.containerMenu instanceof ColorizerMenu menu) {
-				menu.setColorIndex(payload.part(), payload.colorIndex());
-			}
-		}
-	}
+    public static void handle(ColorSelectionPayload payload, Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            if (serverPlayer.containerMenu instanceof ColorizerMenu menu) {
+                menu.setColorIndex(payload.part(), payload.colorIndex());
+            }
+        }
+    }
 
-	public static void send(int part, int colorIndex) {
-		Services.PLATFORM.sendColorSelectionPayloadToServer(new ColorSelectionPayload(part, colorIndex));
-	}
+    public static void send(int part, int colorIndex) {
+        Services.PLATFORM.sendColorSelectionPayloadToServer(new ColorSelectionPayload(part, colorIndex));
+    }
 }
