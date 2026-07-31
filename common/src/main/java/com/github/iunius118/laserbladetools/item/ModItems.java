@@ -2,8 +2,6 @@ package com.github.iunius118.laserbladetools.item;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 
@@ -33,7 +31,7 @@ public class ModItems {
 
     // Block Items
     public static final Item COLORIZER = addBlock(new BlockItem(ModBlocks.COLORIZER,
-            createProperties(Constants.Blocks.COLORIZER)
+            createProperties(Constants.Items.COLORIZER)
                     .useBlockDescriptionPrefix()));
 
     private static Item add(Item item) {
@@ -46,8 +44,8 @@ public class ModItems {
         return add(item);
     }
 
-    private static Item.Properties createProperties(Identifier id) {
-        return new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id));
+    private static Item.Properties createProperties(ResourceKey<Item> key) {
+        return new Item.Properties().setId(key);
     }
 
     static {
