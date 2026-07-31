@@ -14,7 +14,7 @@ They have performance comparable to diamond tools.
 
 ## Requirements
 
-- Minecraft 26.1.2
+- Minecraft 26.2
 - NeoForge version - NeoForge
 - Forge version - Minecraft Forge
 - Fabric version - Fabric Loader and Fabric API
