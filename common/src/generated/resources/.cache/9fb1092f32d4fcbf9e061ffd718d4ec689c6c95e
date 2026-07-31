@@ -1,4 +1,4 @@
-// 26.1.2	2026-05-31T22:19:16.5997955	Recipes
+// 26.2	2026-07-31T19:20:33.5366992	Recipes
 6517700be52f99ae4d89360b12a9ca4d61d43835 data/laserbladetools/advancement/recipes/combat/lb_spear.json
 775448f0653d6a0c0627fd71bd884c8ab5d1ea0e data/laserbladetools/advancement/recipes/combat/lb_sword.json
 ad9c5ef114bc45a551332e3ebf3bc1a8e2260f5a data/laserbladetools/advancement/recipes/decorations/colorizer.json
@@ -9,11 +9,11 @@ ad9c5ef114bc45a551332e3ebf3bc1a8e2260f5a data/laserbladetools/advancement/recipe
 08e85824ee5abc98f9bd829db58ce16e4d50921c data/laserbladetools/advancement/recipes/tools/lb_hoe.json
 0931c6da8165bcfdce1ba8e1bb8a83da33665442 data/laserbladetools/advancement/recipes/tools/lb_pickaxe.json
 2e197f02474be2deb288b06bc183301700fdb103 data/laserbladetools/advancement/recipes/tools/lb_shovel.json
-f499dc0f8ee1bcf054160fa1c551a4c0fec8acff data/laserbladetools/recipe/colorizer.json
+285b07000000adac5dc5d68d0ebb6dccf963a2a9 data/laserbladetools/recipe/colorizer.json
 0f8ee8e72f92a4dd4f49523ba00f9a90e32a8ebb data/laserbladetools/recipe/lb_axe.json
-0805504efd0ff7daa27423f61047b5f74938f404 data/laserbladetools/recipe/lb_core.json
-7aba5a85e351740b318fb57cebd870ecb4fcff9b data/laserbladetools/recipe/lb_core_from_blasting.json
-0a4f848f6952690371aa8a2b65719470b7b54923 data/laserbladetools/recipe/lb_core_from_smelting.json
+13ef2241e77322946bf48955da8495dfdf4000c8 data/laserbladetools/recipe/lb_core.json
+1e6e13dbf16e454faba6cee4c0c91f95dd85b60b data/laserbladetools/recipe/lb_core_from_blasting.json
+64470a05092c259be3146e7a5b758b63cd469cad data/laserbladetools/recipe/lb_core_from_smelting.json
 42c450a8929d8a604bc60e4416ca2fe27fe7401b data/laserbladetools/recipe/lb_hoe.json
 5d7d4fea828126ba771cd34409d0862e67af8c1e data/laserbladetools/recipe/lb_pickaxe.json
 f50f97290be5286fef00b29642cbd4e117f4f811 data/laserbladetools/recipe/lb_shovel.json

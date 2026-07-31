@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerListener;
@@ -66,7 +66,7 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
 		super(menu, inventory, title, GUI_WIDTH, GUI_HEIGHT);
 
 		// Init armor stand preview
-		armorStandPreview.entityType = EntityType.ARMOR_STAND;
+		armorStandPreview.entityType = EntityTypes.ARMOR_STAND;
 		armorStandPreview.showBasePlate = false;
 		armorStandPreview.showArms = true;
 		armorStandPreview.xRot = 25.0F;

@@ -2,13 +2,13 @@ package com.github.iunius118.laserbladetools.client;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.mixin.client.RenderTypeInvoker;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.ColorTargetState;
 import com.mojang.blaze3d.pipeline.DepthStencilState;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.shaders.UniformType;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import net.minecraft.client.renderer.BindGroupLayouts;
 import net.minecraft.client.renderer.rendertype.OutputTarget;
 import net.minecraft.client.renderer.rendertype.RenderSetup;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -22,14 +22,15 @@ public class ModRenderTypes {
 	// Unlit render pipeline using entity shader
 	public static final RenderPipeline UNLIT_TRANSLUCENT_PIPELINE = RenderPipeline.builder()
 			.withLocation("pipeline/lb_unlit_translucent")
-			.withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER)
-			.withUniform("Projection", UniformType.UNIFORM_BUFFER)
-			.withUniform("Fog", UniformType.UNIFORM_BUFFER)
-			.withUniform("Lighting", UniformType.UNIFORM_BUFFER)
+			.withBindGroupLayout(BindGroupLayouts.GLOBALS)
+			.withBindGroupLayout(BindGroupLayouts.MATRICES_PROJECTION)
+			.withBindGroupLayout(BindGroupLayouts.FOG)
+			.withBindGroupLayout(BindGroupLayouts.LIGHTING)
 			.withVertexShader("core/entity")
 			.withFragmentShader("core/entity")
-			.withSampler("Sampler0")
-			.withVertexFormat(DefaultVertexFormat.ENTITY, VertexFormat.Mode.QUADS)
+			.withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+			.withVertexBinding(0, DefaultVertexFormat.ENTITY)
+			.withPrimitiveTopology(PrimitiveTopology.QUADS)
 			.withDepthStencilState(DepthStencilState.DEFAULT)
 			.withShaderDefine("EMISSIVE")
 			.withShaderDefine("NO_OVERLAY")
