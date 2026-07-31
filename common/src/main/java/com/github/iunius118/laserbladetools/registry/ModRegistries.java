@@ -5,7 +5,6 @@ import com.github.iunius118.laserbladetools.block.ModBlocks;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import com.github.iunius118.laserbladetools.menu.ModMenuTypes;
 import com.github.iunius118.laserbladetools.platform.Services;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,7 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class ModRegistries {
-    private static Holder<Item> LB_SWORD;
+    private static ModRegistryObject<Item> LB_SWORD;
 
     public static void registerGameObjects() {
         // Blocks

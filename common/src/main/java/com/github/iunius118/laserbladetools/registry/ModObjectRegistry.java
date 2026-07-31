@@ -1,6 +1,5 @@
 package com.github.iunius118.laserbladetools.registry;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 
 import java.util.function.Consumer;
@@ -18,7 +17,7 @@ public interface ModObjectRegistry<V, T extends V> {
      * @param object The new entry to register.
      * @return A holder for this entry.
      */
-    Holder<V> register(String name, Supplier<T> object);
+    ModRegistryObject<V> register(String name, Supplier<T> object);
 
     /**
      * Adds a new entry to register.
@@ -27,7 +26,7 @@ public interface ModObjectRegistry<V, T extends V> {
      * @param object The new entry to register.
      * @return A holder for this entry.
      */
-    default Holder<V> register(ResourceKey<T> resourceKey, Supplier<T> object) {
+    default ModRegistryObject<V> register(ResourceKey<T> resourceKey, Supplier<T> object) {
         return register(resourceKey.identifier().getPath(), object);
     }
 
@@ -65,7 +64,7 @@ public interface ModObjectRegistry<V, T extends V> {
          * @param object The new entry to register.
          * @return A holder for this entry.
          */
-        public Holder<V> register(String name, Supplier<T> object) {
+        public ModRegistryObject<V> register(String name, Supplier<T> object) {
             return registry.register(name, object);
         }
 
@@ -76,7 +75,7 @@ public interface ModObjectRegistry<V, T extends V> {
          * @param object The new entry to register.
          * @return A holder for this entry.
          */
-        public Holder<V> register(ResourceKey<T> resourceKey, Supplier<T> object) {
+        public ModRegistryObject<V> register(ResourceKey<T> resourceKey, Supplier<T> object) {
             return registry.register(resourceKey, object);
         }
     }
