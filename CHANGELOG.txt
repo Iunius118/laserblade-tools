@@ -3,6 +3,13 @@
 
 ## [Unreleased]
 
+## [2.0.0+26.2]
+### Changed
+- NeoForge version - Require NeoForge 26.2.0.1-beta.
+- Forge version - Require Minecraft Forge 65.1.0.
+- Fabric version - Require Fabric Loader 0.19.3 and Fabric API 0.152.1+26.2.
+- Port to 26.2.
+
 ## [1.1.1+26.1.2]
 ### Fixed
 - Fix behavior when closing laser blade colorizer GUI.
