@@ -1,7 +1,7 @@
 package com.github.iunius118.laserbladetools.menu;
 
 import com.github.iunius118.laserbladetools.block.ModBlocks;
-import com.github.iunius118.laserbladetools.item.LaserBladeColor;
+import com.github.iunius118.laserbladetools.item.LaserBladeToolColor;
 import com.github.iunius118.laserbladetools.tags.ModItemTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
@@ -152,7 +152,7 @@ public class ColorizerMenu extends AbstractContainerMenu {
             } else {
                 // If any color is selected,
                 // Force colors to be opaque
-                int newColor = LaserBladeColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
+                int newColor = LaserBladeToolColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
                 Integer oldColor = existing.getColor(i);
                 newColors.add(newColor);
                 newFlags.add(true);

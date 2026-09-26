@@ -2,7 +2,7 @@ package com.github.iunius118.laserbladetools.item;
 
 import net.minecraft.util.Mth;
 
-public enum LaserBladeColor {
+public enum LaserBladeToolColor {
     WHITE(0xFFFFFFFF, 0xFFF9FFFE, "white"),
     ORANGE(0xFFFFA500, 0xFFF9801D, "orange"),
     MAGENTA(0xFFFF00FF, 0xFFC74EBD, "magenta"),
@@ -26,20 +26,20 @@ public enum LaserBladeColor {
     private final int handleColor;
     private final String colorName;
 
-    LaserBladeColor(int outerBladeColor, int innerBladeColor, int handleColor, String colorName) {
+    LaserBladeToolColor(int outerBladeColor, int innerBladeColor, int handleColor, String colorName) {
         this.outerBladeColor = outerBladeColor;
         this.innerBladeColor = innerBladeColor;
         this.handleColor = handleColor;
         this.colorName = colorName;
     }
 
-    LaserBladeColor(int bladeColor, int handleColor, String colorName) {
+    LaserBladeToolColor(int bladeColor, int handleColor, String colorName) {
         this(bladeColor, bladeColor, handleColor, colorName);
     }
 
 
-    public static LaserBladeColor get(int index) {
-        final LaserBladeColor[] values = LaserBladeColor.values();
+    public static LaserBladeToolColor get(int index) {
+        final LaserBladeToolColor[] values = LaserBladeToolColor.values();
         return values[Mth.clamp(index, 0, values.length - 1)];
     }
 
