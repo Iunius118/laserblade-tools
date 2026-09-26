@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+### Changed
+- NeoForge version - Require NeoForge 26.3.0.1-beta.
+- Forge version - Require Minecraft Forge 66.0.2.
+- Fabric version - Require Fabric Loader 0.19.5 and Fabric API 0.161.0+26.3.
+- Port to 26.3.
+
 ## [2.0.0+26.2]
 ### Changed
 - NeoForge version - Require NeoForge 26.2.0.1-beta.
