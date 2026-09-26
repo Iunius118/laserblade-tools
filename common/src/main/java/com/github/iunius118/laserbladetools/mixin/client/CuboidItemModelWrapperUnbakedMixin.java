@@ -49,7 +49,6 @@ public abstract class CuboidItemModelWrapperUnbakedMixin {
             for (BakedQuad bakedQuad: quadList) {
                 var materialInfo = (BakedQuadMaterialInfoAccessor)(Object) bakedQuad.materialInfo();
                 materialInfo.setItemRenderType(UNLIT_ITEM_SHEET);
-                materialInfo.setShade(false);
                 materialInfo.setLightEmission(15);
             }
         }

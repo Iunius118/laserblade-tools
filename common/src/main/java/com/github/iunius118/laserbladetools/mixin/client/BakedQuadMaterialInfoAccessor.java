@@ -15,9 +15,5 @@ public interface BakedQuadMaterialInfoAccessor {
 
     @Accessor
     @Mutable
-    void setShade(boolean shade);
-
-    @Accessor
-    @Mutable
     void setLightEmission(int lightEmission);
 }

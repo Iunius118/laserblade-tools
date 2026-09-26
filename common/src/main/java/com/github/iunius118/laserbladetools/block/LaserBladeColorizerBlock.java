@@ -2,7 +2,6 @@ package com.github.iunius118.laserbladetools.block;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.menu.ColorizerMenu;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -20,16 +19,10 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class LaserBladeColorizerBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<LaserBladeColorizerBlock> CODEC = simpleCodec(LaserBladeColorizerBlock::new);
     private static final Component CONTAINER_TITLE = Component.translatable(Constants.Colorizer.CONTAINER_COLORIZER);
 
     public LaserBladeColorizerBlock(BlockBehaviour.Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public MapCodec<LaserBladeColorizerBlock> codec() {
-        return CODEC;
     }
 
     @Override
