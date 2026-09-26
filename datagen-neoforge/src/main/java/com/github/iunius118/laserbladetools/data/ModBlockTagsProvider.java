@@ -17,6 +17,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        // Minecraft
+        this.tag(BlockTags.BLOCKS_MOTION_NO_LEAVES).add(Constants.Blocks.COLORIZER);
+
         // Mod
         this.tag(ModBlockTags.INCORRECT_FOR_LASER_BLADE_TOOL).addTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
     }

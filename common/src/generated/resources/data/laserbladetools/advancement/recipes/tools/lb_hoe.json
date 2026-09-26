@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "laserbladetools:lb_hoe"
+        "recipes": "laserbladetools:lb_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

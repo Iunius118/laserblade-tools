@@ -2,7 +2,7 @@ package com.github.iunius118.laserbladetools.client.gui;
 
 import com.github.iunius118.laserbladetools.CommonClass;
 import com.github.iunius118.laserbladetools.Constants;
-import com.github.iunius118.laserbladetools.item.LaserBladeColor;
+import com.github.iunius118.laserbladetools.item.LaserBladeToolColor;
 import com.github.iunius118.laserbladetools.menu.ColorizerMenu;
 import com.github.iunius118.laserbladetools.network.ColorSelectionPayload;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -158,7 +158,7 @@ public class ColorizerScreen extends AbstractContainerScreen<ColorizerMenu> impl
                     continue;
                 }
             } else {
-                argb = LaserBladeColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
+                argb = LaserBladeToolColor.get(colorIndex - 1).partColor(i) | 0xFF000000;
             }
 
             int x = leftPos + COLOR_PREVIEW_X;

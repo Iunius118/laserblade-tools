@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "laserbladetools:colorizer"
+        "recipes": "laserbladetools:colorizer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -3,10 +3,6 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
-base {
-    archivesName = "${mod_id}-${project.name}-neoforge"
-}
-
 neoForge {
     version = neoforge_version
 
@@ -56,6 +52,6 @@ sourceSets.configureEach {
     }
 }
 
-sourceSets.main.resources { 
-    srcDir '../common/src/generated/resources' 
+sourceSets.main.resources {
+    srcDir '../common/src/generated/resources'
 }

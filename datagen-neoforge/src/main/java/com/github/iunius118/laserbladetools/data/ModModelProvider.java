@@ -2,7 +2,7 @@ package com.github.iunius118.laserbladetools.data;
 
 import com.github.iunius118.laserbladetools.Constants;
 import com.github.iunius118.laserbladetools.block.ModBlocks;
-import com.github.iunius118.laserbladetools.item.LaserBladeColor;
+import com.github.iunius118.laserbladetools.item.LaserBladeToolColor;
 import com.github.iunius118.laserbladetools.item.ModItems;
 import net.minecraft.client.color.item.Constant;
 import net.minecraft.client.color.item.CustomModelDataSource;
@@ -41,7 +41,7 @@ public class ModModelProvider extends ModelProvider {
     private void generateBlockModels(BlockModelGenerators blockModels) {
         Consumer<BlockModelDefinitionGenerator> blockStateOutput = blockModels.blockStateOutput;
 
-        blockModels.createHorizontallyRotatedBlock(ModBlocks.COLORIZER, TexturedModel.CUBE_TOP_BOTTOM);
+        blockModels.createHorizontallyRotatedBlock(ModBlocks.COLORIZER, TexturedModel.CUBE_BOTTOM_TOP);
     }
 
     private void generateItemModels(ItemModelGenerators itemModels) {
@@ -95,7 +95,7 @@ public class ModModelProvider extends ModelProvider {
                         new CustomModelDataSource(0, 0)),
                 // Uncolored handle
                 ItemModelUtils.tintedModel(handleModel,
-                        new Constant(LaserBladeColor.WHITE.handleColor())));
+                        new Constant(LaserBladeToolColor.WHITE.handleColor())));
         // Create blade model definition
         ItemModel.Unbaked bladeModelDefinition = ItemModelUtils.conditional(new CustomModelDataProperty(1),
                 ItemModelUtils.conditional(new CustomModelDataProperty(2),
@@ -106,16 +106,16 @@ public class ModModelProvider extends ModelProvider {
                         // Colored outer blade only
                         ItemModelUtils.tintedModel(bladeModel,
                                 new CustomModelDataSource(1, 0),
-                                new Constant(LaserBladeColor.WHITE.bladeColor()))),
+                                new Constant(LaserBladeToolColor.WHITE.bladeColor()))),
                 ItemModelUtils.conditional(new CustomModelDataProperty(2),
                         // Colored inner blade only
                         ItemModelUtils.tintedModel(bladeModel,
-                                new Constant(LaserBladeColor.RED.bladeColor()),
+                                new Constant(LaserBladeToolColor.RED.bladeColor()),
                                 new CustomModelDataSource(2, 0)),
                         // Uncolored both blades
                         ItemModelUtils.tintedModel(bladeModel,
-                                new Constant(LaserBladeColor.RED.bladeColor()),
-                                new Constant(LaserBladeColor.WHITE.bladeColor()))));
+                                new Constant(LaserBladeToolColor.RED.bladeColor()),
+                                new Constant(LaserBladeToolColor.WHITE.bladeColor()))));
         // Create tool model definition
         return ItemModelUtils.composite(handleModelDefinition, bladeModelDefinition);
     }

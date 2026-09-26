@@ -8,15 +8,16 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Objects;
 
-public class DataGenPlatformHelper implements IPlatformHelper {
+public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public String getPlatformName() {
-        return "DataGen";
+        return "NeoForge";
     }
 
     @Override
@@ -31,7 +32,7 @@ public class DataGenPlatformHelper implements IPlatformHelper {
 
     @Override
     public void sendColorSelectionPayloadToServer(ColorSelectionPayload payload) {
-        // Do nothing
+        ClientPacketDistributor.sendToServer(payload);
     }
 
     @Override
