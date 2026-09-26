@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "laserbladetools:lb_pickaxe"
+        "recipes": "laserbladetools:lb_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
