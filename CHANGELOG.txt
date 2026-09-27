@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+## [3.0.0+26.3]
 ### Changed
 - NeoForge version - Require NeoForge 26.3.0.1-beta.
 - Forge version - Require Minecraft Forge 66.0.2.
